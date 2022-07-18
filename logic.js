@@ -1,4 +1,5 @@
 //logic for rock paper scissors implementation
+    //additional fun flare: create two user names for each player.
 const PLAYER1 = "Computer";
 let playerUserName = prompt("What is your name?").toLowerCase(); //Cleaning the data.
 let firstUserNameLetter = playerUserName[0].toUpperCase();
@@ -6,18 +7,20 @@ const PLAYER2 = playerUserName.replace(playerUserName[0], firstUserNameLetter);
 
 console.log("Welcome " + PLAYER2 +"! \nAre you ready to play Rock Paper Scissors with the " + PLAYER1 + "?");
 
-//problem to break down:
+
+    //problem to break down:
     //game rules:
         //players can do three things: rock, paper or scissors
+const PLAYS = ["Rock", "Paper", "Scissors"];
 
         //declare moves as a global const array
-        //additional fun flare: create two user names for each player.
 
+function getComputerChoice() {
     //computer needs to pick a move getComputerChoice()
         //a random choice is generated from the three options --> may need to pass in the choices array
             //using the math library allow for a choice to be picked from the moves array. (Allows for scalability vs hardcoding). 
                 //return the move
-                
+}
                 
     //user needs to pick a move getUserChoice()
         //prompt user for a move

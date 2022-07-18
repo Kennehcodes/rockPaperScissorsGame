@@ -6,7 +6,7 @@ let playerUserName = "";
 do {
     playerUserName = prompt("What is your name?").toLowerCase(); //Cleaning the data.
     }
-while (playerUserName.length === 0 || playerUserName.length > 16)
+while (playerUserName.length === 0 || playerUserName.length > 30)
 
     let firstUserNameLetter = playerUserName[0].toUpperCase();
 const PLAYER2 = playerUserName.replace(playerUserName[0], firstUserNameLetter);
@@ -23,21 +23,28 @@ const PLAYS = ["Rock", "Paper", "Scissors"];
 
 function getComputerChoice() {
     //computer needs to pick a move getComputerChoice()
+    //a random choice is generated from the global three moves options
+        //using the math library allow for a choice to be picked from the moves array. (Allows for scalability vs hardcoding). 
     console.log(PLAYS);
-        //a random choice is generated from the three options --> may need to pass in the choices array
-            //using the math library allow for a choice to be picked from the moves array. (Allows for scalability vs hardcoding). 
-                //return the move
+    let randomMove = (Math.floor(Math.random()*PLAYS.length + 1)) - (1);  //final negative one accounts for array index
+    return PLAYS[randomMove];
 }
 
-getComputerChoice();
-                
+getComputerChoice(); //test call to choice
+
+function getUserChoice() {
     //user needs to pick a move getUserChoice()
         //prompt user for a move
-            //case insensitive support.
-            //must be of a valid length between the len of rock and scissors. We may need to pass in the choices array.
-
+    let userMove = "";
+    do {
+    userMove = prompt("Rock, Paper or Scissors?").toLowerCase().trim();
+    console.log(userMove)
+    }        //case insensitive support.
+    while (userMove !== "rock" && userMove !== "scissors" && userMove !== "paper");
+            //must be ofjavassc a valid length between the len of rock and scissors. We may need to pass in the choices array.
+}
     //user vs computer needs to be evaluated
-
+getUserChoice();
     //a single round is played via a function call. -> playround() player selection and computer selection is the input;
         //takes in two data pieces: player's move and computers move
         //evaluates winner

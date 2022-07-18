@@ -36,13 +36,19 @@ function getUserChoice() {
     //user needs to pick a move getUserChoice()
         //prompt user for a move
     let userMove = "";
+    const playsLower = PLAYS.map(e => {return e.toLowerCase();})
+    console.log(playsLower);
+    console.log(PLAYS);
+
     do {
-    userMove = prompt("Rock, Paper or Scissors?").toLowerCase().trim();
-    console.log(userMove)
-    }        //case insensitive support.
-    while (userMove !== "rock" && userMove !== "scissors" && userMove !== "paper");
+        //checks against plays array entry to ensure the choices match. 
+        userMove = prompt(PLAYS[0] + ", " + PLAYS[1] + " or " + PLAYS[2] + "?").toLowerCase().trim();
+        console.log(userMove)
+    }        //case insensitive support.map
+    while (userMove !== playsLower[0] && userMove !== playsLower[1] && userMove !== playsLower[2]);
             //must be ofjavassc a valid length between the len of rock and scissors. We may need to pass in the choices array.
 }
+
     //user vs computer needs to be evaluated
 getUserChoice();
     //a single round is played via a function call. -> playround() player selection and computer selection is the input;

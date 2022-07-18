@@ -1,8 +1,10 @@
 //logic for rock paper scissors implementation
 const PLAYER1 = "Computer";
-const PLAYER2 = prompt("What is your name?");
+let playerUserName = prompt("What is your name?").toLowerCase(); //Cleaning the data.
+let firstUserNameLetter = playerUserName[0].toUpperCase();
+const PLAYER2 = playerUserName.replace(playerUserName[0], firstUserNameLetter);
 
-console.log("Welcome " + PLAYER2 +"! Are you ready to play Rock Paper Scissors with the " + PLAYER1 + "?");
+console.log("Welcome " + PLAYER2 +"! \nAre you ready to play Rock Paper Scissors with the " + PLAYER1 + "?");
 
 //problem to break down:
     //game rules:

@@ -1,23 +1,31 @@
+
+
 p {
     color: green;
 }
 
 .weapons {
-    width: 300px;
 }
+
 
 .card {
-    background-color: pink;
+    background-color: rgb(255, 246, 168);
     border-radius: 50%;
-}
-.card-p {
-    background-color: aqua;
+    display: flex;
+    width: 400px;
+ }
+ .card:hover {
+    background-color: rgba(255, 255, 255, 0.555);
+    border-radius: 50%;
+    display: flex;
+    width: 400px;
+ }
 
-}
 
 .flex-main-container, .flex-container {
     display: flex;
-    }
+    
+}
 
 .flex-main-container {
     flex-direction: column;
@@ -27,8 +35,66 @@ p {
     gap: 3em;
     margin: 3rem;
     justify-content: center;
+    flex-basis: auto;
+    background-color: ;
+    padding: 3rem;
+
 }
 
-.title {
-    flex-basis: 100%;
+.card-p {
+    justify-self: baseline;    
+}
+
+
+p {
+    color: green;
+}
+
+.weapons {
+    
+}
+
+
+.card {
+ background-color: lightgoldenrodyellow;
+
+    display: flex;
+    width: 400px;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
+ }
+ .card:hover {
+    background-color: white;
+    transition: cubic-bezier(0.47, 0, 0.745, 0.715);
+    
+    width: 400px;
+ }
+
+
+.flex-main-container, .flex-container {
+    display: flex;
+    
+}
+
+.flex-main-container {
+    flex-direction: column;
+}
+
+.flex-container {
+    gap: 3em;
+    margin: 3rem;
+    justify-content: center;
+    flex-basis: auto;
+    background-color: lightgoldenrodyellow;
+    padding: 3rem;
+
+}
+
+.card-p {
+    justify-self: baseline;    
+}
+.card-b {
+
+}
+.card-d {
+ 
 }

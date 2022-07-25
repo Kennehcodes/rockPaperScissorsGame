@@ -1,42 +1,217 @@
-
-.card {
- background-color: #485665;
-    display: flex;
-    width: 100px;
-    overflow: hidden;
-    transition: width 2s, height 2s, background-color 2s, transform 2s;
- }
- .card:hover {
-    background-color: #7c8ea2;
-    transition: cubic-bezier(0.47, 0, 0.745, 0.715);
-    height: auto;
-    width: 300px;
- }
-
-
-.flex-main-container, .flex-container {
-    display: flex;
-    
+body {
+    margin: 0;
+    padding: 0;
 }
+/*all display flex properties not in a media query*/ 
+.card, 
+.flex-main-container, 
+.rock-paper-scissors-container, 
+.page-container, 
+.card-container {
+    display: flex;
+}  
 
-.flex-main-container {
+/*all flex columns*/
+.flex-main-container,
+.card-container {
     flex-direction: column;
 }
+/*layout css properties from top to bottom*/
 
-.flex-container {
+.page-container {
+    background-color: #ffedf3;
+    justify-content: space-between;
+}
+
+.column-container {
+    color: blue;
+}
+
+.sidebar {
+    color:  green;
+}
+
+.main-content {
+    background-color: #f6c0d0;
+}
+
+.header {
+    padding: 1rem;
+    background-color: aliceblue;
+
+    align-self: center;
+}
+.title {
+    font-family: 'Nanum Pen Script', cursive;
+    text-align: center;
+    color: #485665;
+    font-size: 5rem;
+    padding: 0;
+    margin: 0;
+    line-height: 0.7;
+}
+
+.rock-paper-scissors-container {
     gap: 1em;
     margin: 1rem;
     justify-content: center;
     flex-basis: auto;
     padding: 1rem;
 }
+.card-container {
+    width: 20vw;
+    height: auto;
+    flex-shrink: 0;
+    flex-grow: 1; 
+    
+}
+.card {
+    background-color: #485665;
+    border-radius: 100%;
+    padding: 0px;
+    justify-content: center;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
+.card:hover {
+    background-color: #7c8ea2;
+    transition: cubic-bezier(0.47, 0, 0.745, 0.715);
+    
+ }
+ image {
+    max-width: 100%;
+    height: auto;
+ }
+.weapons {
+    margin: 0px;
+    padding: 0px;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+.weapon-text {
+    margin: 1rem;
+    padding: 1rem;
 
-.title {
-    color: #1e3231;
-    text-align: center;
-    font-size: 10rem;
+    align-self: center;
+
+
 }
 
-body {
-    background-color: #f6c0d0;;
+
+
+
+
+
+
+
+
+
+
+.animate {
+
+    animation: title-screen 3s cubic-bezier(0.64, 0, 0.78,0) 0s 1 normal none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes title-screen {
+0%, 
+100%{
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+}
+
+15% {
+    transform: translateX(-30px) rotate(-6deg);
+}
+
+30% {
+    transform: translateX(15px) rotate(6deg);
+}
+45% {
+    transform: translateX(-15px) rotate(-3.6deg);
+    }
+60% {
+    transform: translateX(9px) rotate(2.4deg);
+} 
+75% {
+    transform: translateX(-6px) rotate(-1.2deg);
+}
+}
+
+
+    
+
+@media(max-width: 600px){
+    .sidebar {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 2%;
+        width: 10vw;
+        display: none;
+    }
+    
+    .main-content {
+        flex-direction: column;
+        flex-shrink: 0;
+        flex-basis: 100%;
+        justify-content: center;
+    }   
+    .title {
+        font-size: 3rem;
+    }
+    .card-container {
+        flex-direction: column;
+        padding: 0 0.2rem 0 0.2rem;
+        width: 30vw;
+        height: auto;
+        flex-shrink: 0;
+        flex-grow: 1; 
+        align-self: center;
+
+
+    }
+    .weapon-text {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        display: none;
+
+    }
+    .card {
+        flex-direction: column;
+        align-content: center;
+    }
+    .rock-paper-scissors-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

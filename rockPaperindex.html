@@ -2,7 +2,9 @@
 <html>
     <head>    
 
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
@@ -11,20 +13,47 @@
     <body>
        
         
-        <div class="flex-main-container"> 
-        <h1 class="title">Rock Paper Scissors</h1>
-        <section class="flex-container">
+        <div class="page-container">
+            <div class="column-container sidebar">
+                <p>sidebar</p>
+            </div>
+            <div class="column-container main-content">
+                <div class="header">
+                <h1 class="title">Rock</br> Paper<br>Scissors</h1>
+                </div> 
+                <section class="rock-paper-scissors-container">
+                    <div class="card-container">
+                        <div class="card animate">
+                            <img class="weapons" src="rockgrey.svg">  
+                        </div>
+                        <h3 class="weapon-text">rock</h3>
+                    </div>
+                    <div class="card-container">
+                        <div class="card animate">
+                            <img class="weapons animate" src="paper.svg">
+                        </div>
+                        <h3 class="weapon-text">Paper</h3>
+                    </div>
+                    <div class="card-container">
+                        <div class="card animate">
+                            <img class="weapons" src="scissors.svg">
+                        </div>
+                        <h3 class="weapon-text">Scissors</h3>
+                        
+                    </div>    
+                </section>
+
+                
+            </div>
+            <div class="column-container sidebar">
+            <p>r sidebar</p>
+            </div>
             
-        <div class="card card-d">
-            <img class="weapons" src="rockgrey.svg">
         </div>
-        <div class="card card-p">
-            <img class="weapons" src="paper.svg">
-        </div>
-        <div class="card card-b">
-            <img class="weapons" src="scissors.svg">
-        </div>
-        </section>
+
+
+          
+           
         </div>
 
   

@@ -1,4 +1,4 @@
-//logic for rock paper scissors implementation
+    //logic for rock paper scissors implementation
     //additional fun flare: create two user names for each player.
 const PLAYER1 = "Computer";
 //Error checking to ensure that the username is not empty or too long.
@@ -84,7 +84,7 @@ function game() {
     let player2Scores = 0;
     let gameCount = 1;
     let gameWinner = "";
-    let numberOfRounds = 5;
+    let numberOfRounds = 50;
 
     while (gameCount <= numberOfRounds) {
         let p1Move = getComputerChoice();

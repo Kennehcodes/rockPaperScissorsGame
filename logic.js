@@ -36,7 +36,7 @@ function getUserChoice() {
     let userMove = "";
     do {
         //checks against plays array entry to ensure the choices match. 
-        userMove = prompt(PLAYS[0] + ", " + PLAYS[1] + " or " + PLAYS[2] + "?").toLowerCase().trim();
+        //userMove = prompt(PLAYS[0] + ", " + PLAYS[1] + " or " + PLAYS[2] + "?").toLowerCase().trim();
     }        //case insensitive support.map
     while (userMove !== playsLower[0] && userMove !== playsLower[1] && userMove !== playsLower[2]);
     
@@ -84,7 +84,7 @@ function game() {
     let player2Scores = 0;
     let gameCount = 1;
     let gameWinner = "";
-    let numberOfRounds = 50;
+    let numberOfRounds = 0;
 
     while (gameCount <= numberOfRounds) {
         let p1Move = getComputerChoice();

@@ -1,72 +1,16 @@
 
-
-p {
-    color: green;
-}
-
-.weapons {
-}
-
-
 .card {
-    background-color: rgb(255, 246, 168);
-    border-radius: 50%;
+ background-color: #485665;
     display: flex;
-    width: 400px;
- }
- .card:hover {
-    background-color: rgba(255, 255, 255, 0.555);
-    border-radius: 50%;
-    display: flex;
-    width: 400px;
- }
-
-
-.flex-main-container, .flex-container {
-    display: flex;
-    
-}
-
-.flex-main-container {
-    flex-direction: column;
-}
-
-.flex-container {
-    gap: 3em;
-    margin: 3rem;
-    justify-content: center;
-    flex-basis: auto;
-    background-color: ;
-    padding: 3rem;
-
-}
-
-.card-p {
-    justify-self: baseline;    
-}
-
-
-p {
-    color: green;
-}
-
-.weapons {
-    
-}
-
-
-.card {
- background-color: lightgoldenrodyellow;
-
-    display: flex;
-    width: 400px;
+    width: 100px;
+    overflow: hidden;
     transition: width 2s, height 2s, background-color 2s, transform 2s;
  }
  .card:hover {
-    background-color: white;
+    background-color: #7c8ea2;
     transition: cubic-bezier(0.47, 0, 0.745, 0.715);
-    
-    width: 400px;
+    height: auto;
+    width: 300px;
  }
 
 
@@ -80,21 +24,19 @@ p {
 }
 
 .flex-container {
-    gap: 3em;
-    margin: 3rem;
+    gap: 1em;
+    margin: 1rem;
     justify-content: center;
     flex-basis: auto;
-    background-color: lightgoldenrodyellow;
-    padding: 3rem;
-
+    padding: 1rem;
 }
 
-.card-p {
-    justify-self: baseline;    
+.title {
+    color: #1e3231;
+    text-align: center;
+    font-size: 10rem;
 }
-.card-b {
 
-}
-.card-d {
- 
+body {
+    background-color: #f6c0d0;;
 }

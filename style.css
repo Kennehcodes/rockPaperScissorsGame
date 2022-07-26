@@ -73,6 +73,15 @@ justify-content: space-around;
     flex-grow: 1; 
     
 }
+
+.cent {
+    justify-content: center;
+}
+.spaceBt {
+justify-content: space-between;
+}
+    
+
 .card {
     background-color: #fff;
     border-radius: 100%;
@@ -163,6 +172,9 @@ text-align: center;
         width: 15%;
       
     }
+    .header {
+        padding-bottom: 0;
+    }
     
     .main-content {
         flex-direction: column;
@@ -201,6 +213,8 @@ text-align: center;
     .paddingTop {
         width: 40vw;
     }
+
+    
 }
 
 .username {

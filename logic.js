@@ -90,7 +90,9 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
         {
             gameElmnts.welcomeContainer.remove();
             rpsContainer.classList.remove("hidden");
-            gameElmnts.gameScoreBox = document.createElement("div");
+            gameElmnts.scoreAndRoundContainer = document.createElement("div");
+            gameElmnts.scoreAndRoundContainer.classList.add("flex", "cent");
+            gameElmnts.gameScoreBox = document.createElement("span");
             gameElmnts.scoreBoxWelText = document.createElement("span");
             
             gameElmnts.scoreBoxUserContainer= document.createElement("div");
@@ -100,17 +102,19 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
             gameElmnts.scoreBoxScoreP1 = document.createElement("div");
             gameElmnts.scoreBoxUNamesP2 = document.createElement("span");
             gameElmnts.scoreBoxScoreP2 = document.createElement("div");
-            gameElmnts.roundBox = document.createElement("div");
+            gameElmnts.roundBox = document.createElement("span");
+            gameElmnts.roundBoxDynamic = document.createElement("span");
             
-            gameElmnts.scoreBoxUserContainer.classList.add("flex");
-            gameElmnts.scoreBoxWelText.textContent = "Scores: ";
+            gameElmnts.scoreBoxUserContainer.classList.add("flex", "spaceBt");
+          
             gameElmnts.scoreBoxUNamesP2.textContent = playerTwo.username;
             gameElmnts.scoreBoxUNamesP1.classList.add("playerOne");
             gameElmnts.scoreBoxUNamesP2.classList.add("playerTwo");
             gameElmnts.scoreBoxUNamesP1.textContent = playerOne.username;
             gameElmnts.scoreBoxScoreP1.textContent = 0;
             gameElmnts.scoreBoxScoreP2.textContent = 0;
-            gameElmnts.roundBox.textContent = "Round "+ 0;
+            gameElmnts.roundBox.textContent = "Round ";
+            gameElmnts.roundBoxDynamic.textContent = 0;
             
             
             gameElmnts.scoreBoxUserContainerP1.appendChild(gameElmnts.scoreBoxUNamesP1);
@@ -124,13 +128,18 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
             
             gameElmnts.scoreBoxUserContainer.appendChild(gameElmnts.scoreBoxUserContainerP2);
             
-            gameElmnts.gameScoreBox.appendChild(gameElmnts.scoreBoxWelText);
+            
             
             gameElmnts.gameScoreBox.appendChild(gameElmnts.scoreBoxUserContainer);
+            gameElmnts.roundBox.appendChild(gameElmnts.roundBoxDynamic);
+            gameElmnts.scoreAndRoundContainer.appendChild(gameElmnts.roundBox);
+            
 
-            gameElmnts.gameScoreBox.appendChild(gameElmnts.roundBox);
+            userInteractionDiv.appendChild(gameElmnts.scoreAndRoundContainer);
+            
             
             userInteractionDiv.appendChild(gameElmnts.gameScoreBox);
+            
         }
     })
         

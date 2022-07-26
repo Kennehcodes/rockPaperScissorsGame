@@ -1,4 +1,4 @@
-const gameElmnts = { round: 0};
+const gameElmnts = { round: 0, winningScore: 10};
 //lets find the query selector elements
 //first my goal is to include hover functionality 
 
@@ -170,7 +170,9 @@ function isWinner(winnerPlayerMove, loserPlayerMove) {
     return false; //if not a winner
 }
 
-let roundCounter = 0;
+
+
+
 const maxRounds = 10;
 let rockCK = document.querySelector("#rock");
 rockCK.classList.add("rockStart");
@@ -179,32 +181,28 @@ paperCK.classList.add("paperStart");
 let scissorsCK = document.querySelector("#scissors");
 scissorsCK.classList.add("scissorsStart");
 
-
-let rockClicked = rockCK.addEventListener("click", function (event) {
-    let roundStart = event.target; 
-    if (roundStart.tagName === "IMG" && roundStart.classList.contains("rockStart"))
-    {
-        if (roundCounter >= maxRounds) {
-            console.log("done you can't play anymore")
-        }
-        playerOne.currentMove = event.target.id; 
-        console.log(playerOne.currentMove)
-        playerTwo.currentMove = getComputerChoice();
-        console.log(playerTwo.currentMove);
-        let tieCheck = isTie(playerOne.currentMove, playerTwo.currentMove);
-        console.log(tieCheck)
-        playerOne.isRoundWinner = isWinner(playerOne.currentMove, playerTwo.currentMove); 
-        playerTwo.isRoundWinner = isWinner(playerTwo.currentMove, playerOne.currentMove);
-        console.log("p1 winner?" + playerOne.isRoundWinner);
-        console.log("p2 winner?" + playerTwo.isRoundWinner);
-        if (playerOne.isRoundWinner) {
-            playerOne.score++;
-            gameElmnts.scoreBoxScoreP1.textContent = gameElmnts.score;
-            gameElmnts.scoreBoxUserContainer();
-                        console.log(playerOne.score);
-
-        }
-        //check if max round have been met-> 
+function gamePlay(event){
+playerOne.currentMove = event.target.id; 
+console.log(playerOne.currentMove)
+playerTwo.currentMove = getComputerChoice();
+console.log(playerTwo.currentMove);
+//update round counter 
+gameElmnts.round++;
+gameElmnts.roundBoxDynamic.innerText = gameElmnts.round;
+let tieCheck = isTie(playerOne.currentMove, playerTwo.currentMove);
+console.log(tieCheck)
+playerOne.isRoundWinner = isWinner(playerOne.currentMove, playerTwo.currentMove); 
+playerTwo.isRoundWinner = isWinner(playerTwo.currentMove, playerOne.currentMove);
+console.log("p1 winner?" + playerOne.isRoundWinner);
+console.log("p2 winner?" + playerTwo.isRoundWinner);
+if (playerOne.isRoundWinner) {
+    playerOne.score++;
+    gameElmnts.scoreBoxScoreP1.innerText = playerOne.score;
+} else if (playerTwo.isRoundWinner) {
+    playerTwo.score++;
+    gameElmnts.scoreBoxScoreP2.innerText = playerTwo.score;
+}}
+ //check if max round have been met-> 
             //IF MAX ROUNDS has been met: if so, delete and add a new reset button
 
        //we need to do two things->
@@ -218,21 +216,52 @@ let rockClicked = rockCK.addEventListener("click", function (event) {
         //sound?
 
        //update the score board
+function restartGame() {
+    gameElmnts.scoreAndRoundContainer.remove(); 
+    gameElmnts.gameScoreBox.remove();
+    console.log("mooples")
+}
+
+
+let rockClicked = rockCK.addEventListener("click", function (event) {
+    let roundStart = event.target; 
+    if (roundStart.tagName === "IMG" && roundStart.classList.contains("rockStart"))
+    {
+        if (playerOne.score >= gameElmnts.winningScore || playerTwo.score >= gameElmnts.winningScore) {
+            console.log("done you can't play anymore");
+            rpsContainer.classList.add("hidden");
+            restartGame();
+            
+
+        } else {
+            gamePlay(event);
+    } 
     }
 })
 let paperClicked = paperCK.addEventListener("click", function (event) {
     let roundStart = event.target; 
     if (roundStart.tagName === "IMG" && roundStart.classList.contains("paperStart"))
     {
-        console.log('toast');
+        if (playerOne.score >= gameElmnts.winningScore || playerTwo.score >= gameElmnts.winningScore) {
+            console.log("done you can't play anymore")
+            rpsContainer.classList.add("hidden");
+            restartGame();
+        } else {
+            gamePlay(event);
+    } 
     }
-    console.log('taco');
 })
 let scissorsClicked = scissorsCK.addEventListener("click", function (event) {
     let roundStart = event.target; 
     if (roundStart.tagName === "IMG" && roundStart.classList.contains("scissorsStart"))
     {
-        console.log('toastscic');
+        if (playerOne.score >= gameElmnts.winningScore || playerTwo.score >= gameElmnts.winningScore)  {
+            console.log("done you can't play anymore")
+            rpsContainer.classList.add("hidden");
+            restartGame();
+        } else {
+            gamePlay(event);
+    } 
     }
 })
 

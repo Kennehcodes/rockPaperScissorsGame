@@ -1,4 +1,4 @@
-const gameElmnts = {};
+const gameElmnts = { round: 0};
 //lets find the query selector elements
 //first my goal is to include hover functionality 
 
@@ -39,8 +39,8 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
     userInputForm.appendChild(userInputSubmit);
     userTextField.appendChild(userInputForm);
     userInteractionDiv.appendChild(userTextField);
-    const playerOne = {};
-    const playerTwo = {username: "Computer"};
+    const playerOne = {score: 0};
+    const playerTwo = {score: 0, username: "Computer"};
 
     let checkforInput = document.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -84,12 +84,16 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
    let meet=   document.querySelector(".startbutton");
 
 
-    let bc = userInteractionDiv.addEventListener("click", function (event) {
+    let startButtonIsThereCheck = userInteractionDiv.addEventListener("click", function (event) {
         let startB = event.target; 
         if (startB.tagName === "BUTTON" && startB.classList.contains("startButton"))
         {
             gameElmnts.welcomeContainer.remove();
             rpsContainer.classList.remove("hidden");
+            rpsContainer.classList.add("rpsStart");
+            buttonPaper.classList.add("paperStart");
+            buttonScissors.classList.add("scissorsStart");
+            buttonRock.classList.add("rockStart");
             gameElmnts.scoreAndRoundContainer = document.createElement("div");
             gameElmnts.scoreAndRoundContainer.classList.add("flex", "cent");
             gameElmnts.gameScoreBox = document.createElement("span");
@@ -111,10 +115,10 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
             gameElmnts.scoreBoxUNamesP1.classList.add("playerOne");
             gameElmnts.scoreBoxUNamesP2.classList.add("playerTwo");
             gameElmnts.scoreBoxUNamesP1.textContent = playerOne.username;
-            gameElmnts.scoreBoxScoreP1.textContent = 0;
-            gameElmnts.scoreBoxScoreP2.textContent = 0;
+            gameElmnts.scoreBoxScoreP1.textContent = playerOne.score;
+            gameElmnts.scoreBoxScoreP2.textContent = playerTwo.score;
             gameElmnts.roundBox.textContent = "Round ";
-            gameElmnts.roundBoxDynamic.textContent = 0;
+            gameElmnts.roundBoxDynamic.textContent = gameElmnts.round;
             
             
             gameElmnts.scoreBoxUserContainerP1.appendChild(gameElmnts.scoreBoxUNamesP1);
@@ -135,40 +139,18 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
             gameElmnts.scoreAndRoundContainer.appendChild(gameElmnts.roundBox);
             
 
-            userInteractionDiv.appendChild(gameElmnts.scoreAndRoundContainer);
-            
-            
+            userInteractionDiv.appendChild(gameElmnts.scoreAndRoundContainer); 
             userInteractionDiv.appendChild(gameElmnts.gameScoreBox);
             
         }
     })
-        
-
-//logic for rock paper scissors implementation
-    //additional fun flare: create two user names for each player.
-
-//Error checking to ensure that the username is not empty or too long.
-
-//uncommentconsole.log("Welcome " + PLAYER2 +"! \n\nAre you ready to play Rock Paper Scissors with the " + PLAYER1 + "?");
 
 const PLAYS = ["Rock", "Paper", "Scissors"];
 const playsLower = PLAYS.map(e => {return e.toLowerCase();})
-
 function getComputerChoice() {
     let randomMove = (Math.floor(Math.random()*playsLower.length + 1)) - (1);  //final negative one accounts for array index
     return playsLower[randomMove];
 }
-
-function getUserChoice() {
-    let userMove = "";
-    do {
-        userMove = prompt(PLAYS[0] + ", " + PLAYS[1] + " or " + PLAYS[2] + "?").toLowerCase().trim();
-    }    
-    while (userMove !== playsLower[0] && userMove !== playsLower[1] && userMove !== playsLower[2]);
-    
-    return userMove;
-}
-
 function isTie(player1Move, player2Move) {
     if (player1Move === player2Move) {
         return true;
@@ -176,7 +158,6 @@ function isTie(player1Move, player2Move) {
         return false;
     }
 }
-
 function isWinner(winnerPlayerMove, loserPlayerMove) {
     const winningCombos = [["paper", "rock"], ["scissors", "paper"],["rock", "scissors"]]
     let comboCheck = 0;
@@ -189,19 +170,76 @@ function isWinner(winnerPlayerMove, loserPlayerMove) {
     return false; //if not a winner
 }
 
-    //user vs computer move evaluation
-function playRound(player1Move, player2Move) {
-    //check for a tie
-    if (isTie(player1Move, player2Move)) {
-        return "TIE";
-    } if (isWinner(player1Move, player2Move)) {
-        return PLAYER1;
-    } if (isWinner(player2Move, player1Move)) {
-        return PLAYER2;
-    } else {
-        return "Ruhroh! Something unexpected happened!!"
+let roundCounter = 0;
+const maxRounds = 10;
+let rockCK = document.querySelector("#rock");
+rockCK.classList.add("rockStart");
+let paperCK = document.querySelector("#paper");
+paperCK.classList.add("paperStart");
+let scissorsCK = document.querySelector("#scissors");
+scissorsCK.classList.add("scissorsStart");
+
+
+let rockClicked = rockCK.addEventListener("click", function (event) {
+    let roundStart = event.target; 
+    if (roundStart.tagName === "IMG" && roundStart.classList.contains("rockStart"))
+    {
+        if (roundCounter >= maxRounds) {
+            console.log("done you can't play anymore")
+        }
+        playerOne.currentMove = event.target.id; 
+        console.log(playerOne.currentMove)
+        playerTwo.currentMove = getComputerChoice();
+        console.log(playerTwo.currentMove);
+        let tieCheck = isTie(playerOne.currentMove, playerTwo.currentMove);
+        console.log(tieCheck)
+        playerOne.isRoundWinner = isWinner(playerOne.currentMove, playerTwo.currentMove); 
+        playerTwo.isRoundWinner = isWinner(playerTwo.currentMove, playerOne.currentMove);
+        console.log("p1 winner?" + playerOne.isRoundWinner);
+        console.log("p2 winner?" + playerTwo.isRoundWinner);
+        if (playerOne.isRoundWinner) {
+            playerOne.score++;
+            gameElmnts.scoreBoxScoreP1.textContent = gameElmnts.score;
+            gameElmnts.scoreBoxUserContainer();
+                        console.log(playerOne.score);
+
+        }
+        //check if max round have been met-> 
+            //IF MAX ROUNDS has been met: if so, delete and add a new reset button
+
+       //we need to do two things->
+       //record the move
+            //update the onclick css color
+            //add other effects? sound?
+       //get the computer's move
+            //update the onclick css color
+       //evaluate the win
+       //flash the result? maybe?
+        //sound?
+
+       //update the score board
     }
-}
+})
+let paperClicked = paperCK.addEventListener("click", function (event) {
+    let roundStart = event.target; 
+    if (roundStart.tagName === "IMG" && roundStart.classList.contains("paperStart"))
+    {
+        console.log('toast');
+    }
+    console.log('taco');
+})
+let scissorsClicked = scissorsCK.addEventListener("click", function (event) {
+    let roundStart = event.target; 
+    if (roundStart.tagName === "IMG" && roundStart.classList.contains("scissorsStart"))
+    {
+        console.log('toastscic');
+    }
+})
+
+
+
+
+
 
 function game() {
     let player1Scores = 0;

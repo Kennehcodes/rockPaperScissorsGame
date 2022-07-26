@@ -19,32 +19,34 @@ body {
 /*layout css properties from top to bottom*/
 
 .page-container {
-    background-color: #ffedf3;
     justify-content: space-between;
 }
 
 .column-container {
-    color: blue;
+    color: white;
 }
 
 .sidebar {
+    background-color: #6868ac;
     color:  green;
+    flex-basis: 15%;
+    width: 15%;
+      
 }
 
 .main-content {
-    background-color: #f6c0d0;
+    background-color: #fff;
 }
 
-.header {
+.header, .userInteraction {
     padding: 1rem;
-    background-color: aliceblue;
-
+    margin: 1rem;
     align-self: center;
 }
 .title {
     font-family: 'Nanum Pen Script', cursive;
     text-align: center;
-    color: #485665;
+    color: #e187b8;
     font-size: 5rem;
     padding: 0;
     margin: 0;
@@ -52,6 +54,8 @@ body {
 }
 
 .rock-paper-scissors-container {
+    background-color: #d65079;
+    border-radius: 25px 25px 25px 25px;
     gap: 1em;
     margin: 1rem;
     justify-content: center;
@@ -66,14 +70,14 @@ body {
     
 }
 .card {
-    background-color: #485665;
+    background-color: #fff;
     border-radius: 100%;
     padding: 0px;
     justify-content: center;
     transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 .card:hover {
-    background-color: #7c8ea2;
+    background-color: #ecc371;
     transition: cubic-bezier(0.47, 0, 0.745, 0.715);
     
  }
@@ -87,45 +91,26 @@ body {
     flex-shrink: 0;
     flex-grow: 0;
 }
-.weapon-text {
-    margin: 1rem;
-    padding: 1rem;
+
+.userInteraction {
+background-color: #85a1ac;
+display: flex;
+flex-wrap: wrap;
+text-align: center;
+}
+
+.center {
     align-self: center;
+    flex-basis: 100%;
+    flex-shrink: 1;
+    flex-grow: 0;
 }
-
-.selected-text {
-    color: green;
-}
-
-
-
-
-
-
-
-
-
 
 
 .animate {
 
     animation: title-screen 3s cubic-bezier(0.64, 0, 0.78,0) 0s 1 normal none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @keyframes title-screen {
 0%, 
@@ -159,8 +144,8 @@ body {
     .sidebar {
         flex-grow: 0;
         flex-shrink: 0;
-        flex-basis: 20%;
-        width: 20%;
+        flex-basis: 15%;
+        width: 15%;
       
     }
     
@@ -182,17 +167,8 @@ body {
         flex-shrink: 0;
         flex-grow: 0; 
         align-self: center;
-
-
     }
-    .weapon-text {
-        margin-top: 0.5rem;
-        padding-top: 0.5rem;
-        margin-bottom: 0;
-        padding-bottom: 0;
-        display: none;
-
-    }
+    
     .card {
         flex-direction: column;
         align-content: center;
@@ -202,7 +178,9 @@ body {
         justify-content: center;
     }
 
-    
+    .userInteraction {
+        flex-direction: column;
+    }
 }
 
 
@@ -215,5 +193,9 @@ body {
 
 
 
-
-
+.color {
+    color: #85a1ac;
+}
+.weaponNotInPlay {
+    display: none;
+}

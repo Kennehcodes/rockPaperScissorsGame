@@ -3,41 +3,33 @@
 const PLAYER1 = "Computer";
 //Error checking to ensure that the username is not empty or too long.
 let playerUserName = "";
-do {
-    playerUserName = prompt("What is your name?").toLowerCase(); //Cleaning the data.
-    }
-while (playerUserName.length === 0 || playerUserName.length > 30)
 
-    let firstUserNameLetter = playerUserName[0].toUpperCase();
-const PLAYER2 = playerUserName.replace(playerUserName[0], firstUserNameLetter);
+function getUserName() {
+    do {
+        playerUserName = prompt("What is your name?").toLowerCase(); //Cleaning the data.
+        }
+    while (playerUserName.length === 0 || playerUserName.length > 30)
+    let firstUserNameLetter = playerUserName[0].toUpperCase();    
+    return firstUserNameLetter;
+}
+  //uncomment this  let firstUserNameLetter = getUserName();
+//uncommentconst PLAYER2 = playerUserName.replace(playerUserName[0], firstUserNameLetter);
 
-console.log("Welcome " + PLAYER2 +"! \n\nAre you ready to play Rock Paper Scissors with the " + PLAYER1 + "?");
+//uncommentconsole.log("Welcome " + PLAYER2 +"! \n\nAre you ready to play Rock Paper Scissors with the " + PLAYER1 + "?");
 
-
-    //problem to break down:
-    //game rules:
-        //players can do three things: rock, paper or scissors
 const PLAYS = ["Rock", "Paper", "Scissors"];
 const playsLower = PLAYS.map(e => {return e.toLowerCase();})
 
-        //declare moves as a global const array
-
 function getComputerChoice() {
-    //computer needs to pick a move getComputerChoice()
-    //a random choice is generated from the global three moves options
-        //using the math library allow for a choice to be picked from the moves array. (Allows for scalability vs hardcoding). 
     let randomMove = (Math.floor(Math.random()*playsLower.length + 1)) - (1);  //final negative one accounts for array index
     return playsLower[randomMove];
 }
 
 function getUserChoice() {
-    //user needs to pick a move getUserChoice()
-        //prompt user for a move
     let userMove = "";
     do {
-        //checks against plays array entry to ensure the choices match. 
         userMove = prompt(PLAYS[0] + ", " + PLAYS[1] + " or " + PLAYS[2] + "?").toLowerCase().trim();
-    }        //case insensitive support.map
+    }    
     while (userMove !== playsLower[0] && userMove !== playsLower[1] && userMove !== playsLower[2]);
     
     return userMove;
@@ -52,8 +44,6 @@ function isTie(player1Move, player2Move) {
 }
 
 function isWinner(winnerPlayerMove, loserPlayerMove) {
-    /* Winning combos:
-    (paper, rock) (scissors, paper),(rock, scissors) */
     const winningCombos = [["paper", "rock"], ["scissors", "paper"],["rock", "scissors"]]
     let comboCheck = 0;
     while (comboCheck < 3) { //loops over for the length of the winning combo array to check the winning combos
@@ -121,9 +111,29 @@ function game() {
   
 return gameWinner;
 }
-let gamePlay = game();
-console.log(gamePlay);
+//let gamePlay = game();
 
+//uncomment thiss console.log(gamePlay);
+
+//lets find the query selector elements
+//first my goal is to include hover functionality 
+
+const h1Rock = document.querySelector("#h1Rock");
+const h1Paper = document.querySelector("#h1Paper");
+const h1Scissors = document.querySelector("#h1Scissors");
+
+const buttonRock = document.querySelector("#buttonRock");
+const buttonPaper = document.querySelector("#buttonPaper");
+const buttonScissors = document.querySelector("#buttonScissors");
+
+console.log(buttonScissors);
+
+buttonRock.addEventListener('mouseover', () => h1Rock.classList.add("color"));
+buttonPaper.addEventListener('mouseover', () => h1Paper.classList.add("color"));
+buttonScissors.addEventListener('mouseover', () => h1Scissors.classList.add("color"));
+buttonRock.addEventListener('mouseout', () => h1Rock.classList.remove("color"));
+buttonPaper.addEventListener('mouseout', () => h1Paper.classList.remove("color"));
+buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("color"));
 
     
 //game function is created: 
@@ -136,4 +146,20 @@ console.log(gamePlay);
 //function to create: getComputerChoice
 //randomly picks rock, paper, or scissors
 
+const userInteractionDiv = document.querySelector('#nameBox');
+console.log(userInteractionDiv);
+let userTextField = document.createElement("div");
+let userInputForm = document.createElement("form");
+let userInputField = document.createElement("input");
+userTextField.classList.add("center");
 
+userTextField.textContent = "Enter your name to start\:";
+userInputField.placeholder = "What's your name?"
+console.log(userInputField.placeholder);
+userTextField.classList.add("center");
+userTextField.classList.add("center");
+userInputForm.appendChild(userInputField);
+
+userTextField.appendChild(userInputForm);
+
+userInteractionDiv.appendChild(userTextField);

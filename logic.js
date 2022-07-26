@@ -1,4 +1,53 @@
-    //logic for rock paper scissors implementation
+
+//lets find the query selector elements
+//first my goal is to include hover functionality 
+
+const h1Rock = document.querySelector("#h1Rock");
+const h1Paper = document.querySelector("#h1Paper");
+const h1Scissors = document.querySelector("#h1Scissors");
+
+const buttonRock = document.querySelector("#buttonRock");
+const buttonPaper = document.querySelector("#buttonPaper");
+const buttonScissors = document.querySelector("#buttonScissors");
+
+console.log(buttonScissors);
+
+buttonRock.addEventListener('mouseover', () => h1Rock.classList.add("color"));
+buttonPaper.addEventListener('mouseover', () => h1Paper.classList.add("color"));
+buttonScissors.addEventListener('mouseover', () => h1Scissors.classList.add("color"));
+buttonRock.addEventListener('mouseout', () => h1Rock.classList.remove("color"));
+buttonPaper.addEventListener('mouseout', () => h1Paper.classList.remove("color"));
+buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("color"));
+
+
+
+    const userInteractionDiv = document.querySelector('#nameBox');
+    let userTextField = document.createElement("div");
+    let userInputForm = document.createElement("form");
+    let userInputField = document.createElement("input");
+    let userInputSubmit = document.createElement("button");
+    userTextField.classList.add("center");
+    userTextField.textContent = "Enter your name to start\:";
+    userInputField.placeholder = "What's your name?";
+    userInputSubmit.textContent = "moo";
+    userInputSubmit.type = "button";
+    userTextField.classList.add("center");
+    userInputField.classList.add("paddingTop");
+    userInputForm.appendChild(userInputField);
+    userInputForm.appendChild(userInputSubmit);
+    userTextField.appendChild(userInputForm);
+    userInteractionDiv.appendChild(userTextField);
+    const playerOne = {};
+
+        let checkforInput = document.addEventListener("submit", function (e) {
+            e.preventDefault();
+           playerOne.username = userInputField.value;
+           userInputField.value = "";
+        })
+    
+
+
+//logic for rock paper scissors implementation
     //additional fun flare: create two user names for each player.
 const PLAYER1 = "Computer";
 //Error checking to ensure that the username is not empty or too long.
@@ -12,8 +61,8 @@ function getUserName() {
     let firstUserNameLetter = playerUserName[0].toUpperCase();    
     return firstUserNameLetter;
 }
-  //uncomment this  let firstUserNameLetter = getUserName();
-//uncommentconst PLAYER2 = playerUserName.replace(playerUserName[0], firstUserNameLetter);
+//let firstUserNameLetter = getUserName();
+//const PLAYER2 = playerUserName.replace(playerUserName[0], firstUserNameLetter);
 
 //uncommentconsole.log("Welcome " + PLAYER2 +"! \n\nAre you ready to play Rock Paper Scissors with the " + PLAYER1 + "?");
 
@@ -115,26 +164,6 @@ return gameWinner;
 
 //uncomment thiss console.log(gamePlay);
 
-//lets find the query selector elements
-//first my goal is to include hover functionality 
-
-const h1Rock = document.querySelector("#h1Rock");
-const h1Paper = document.querySelector("#h1Paper");
-const h1Scissors = document.querySelector("#h1Scissors");
-
-const buttonRock = document.querySelector("#buttonRock");
-const buttonPaper = document.querySelector("#buttonPaper");
-const buttonScissors = document.querySelector("#buttonScissors");
-
-console.log(buttonScissors);
-
-buttonRock.addEventListener('mouseover', () => h1Rock.classList.add("color"));
-buttonPaper.addEventListener('mouseover', () => h1Paper.classList.add("color"));
-buttonScissors.addEventListener('mouseover', () => h1Scissors.classList.add("color"));
-buttonRock.addEventListener('mouseout', () => h1Rock.classList.remove("color"));
-buttonPaper.addEventListener('mouseout', () => h1Paper.classList.remove("color"));
-buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("color"));
-
     
 //game function is created: 
     //plays five rounds of rock paper scissors, keeps track of the win/losses.
@@ -143,23 +172,7 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
             //return winner of the round.
             //update score chart
 
+
 //function to create: getComputerChoice
 //randomly picks rock, paper, or scissors
 
-const userInteractionDiv = document.querySelector('#nameBox');
-console.log(userInteractionDiv);
-let userTextField = document.createElement("div");
-let userInputForm = document.createElement("form");
-let userInputField = document.createElement("input");
-userTextField.classList.add("center");
-
-userTextField.textContent = "Enter your name to start\:";
-userInputField.placeholder = "What's your name?"
-console.log(userInputField.placeholder);
-userTextField.classList.add("center");
-userTextField.classList.add("center");
-userInputForm.appendChild(userInputField);
-
-userTextField.appendChild(userInputForm);
-
-userInteractionDiv.appendChild(userTextField);

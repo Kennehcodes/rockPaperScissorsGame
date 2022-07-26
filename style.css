@@ -27,7 +27,7 @@ body {
 }
 
 .sidebar {
-    background-color: #6868ac;
+    background-color: #fff;
     color:  green;
     flex-basis: 15%;
     width: 15%;
@@ -93,9 +93,11 @@ body {
 }
 
 .userInteraction {
-background-color: #85a1ac;
-display: flex;
-flex-wrap: wrap;
+background-color: #fff;
+color: black;
+padding-top: 0;
+margin-top: 0;
+
 text-align: center;
 }
 
@@ -104,8 +106,14 @@ text-align: center;
     flex-basis: 100%;
     flex-shrink: 1;
     flex-grow: 0;
-}
+    gap: 1;
+    margin-bottom: 0.2rem;}
 
+.paddingTop {
+    padding-top: 0.5rem;
+    margin-top: 10px;
+
+}
 
 .animate {
 
@@ -179,7 +187,10 @@ text-align: center;
     }
 
     .userInteraction {
-        flex-direction: column;
+       
+    }
+    .paddingTop {
+        width: 40vw;
     }
 }
 

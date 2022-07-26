@@ -20,17 +20,19 @@ buttonPaper.addEventListener('mouseout', () => h1Paper.classList.remove("color")
 buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("color"));
 
 
-
+    const rpsContainer = document.querySelector("#rpsc");
+    rpsContainer.classList.add("hidden");
     const userInteractionDiv = document.querySelector('#nameBox');
     let userTextField = document.createElement("div");
     let userInputForm = document.createElement("form");
     let userInputField = document.createElement("input");
     let userInputSubmit = document.createElement("button");
     userTextField.classList.add("center");
-    userTextField.textContent = "Enter your name to start\:";
+    userInteractionDiv.classList.add("subtext")
+;    userTextField.textContent = "Enter your name to start\:";
     userInputField.placeholder = "What's your name?";
-    userInputSubmit.textContent = "moo";
-    userInputSubmit.type = "button";
+    userInputSubmit.textContent = "enter";
+    userInputSubmit.type = "submit";
     userTextField.classList.add("center");
     userInputField.classList.add("paddingTop");
     userInputForm.appendChild(userInputField);
@@ -38,31 +40,39 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
     userTextField.appendChild(userInputForm);
     userInteractionDiv.appendChild(userTextField);
     const playerOne = {};
+    const playerTwo = {username: "Computer"};
 
-        let checkforInput = document.addEventListener("submit", function (e) {
-            e.preventDefault();
-           playerOne.username = userInputField.value;
-           userInputField.value = "";
-        })
+    let checkforInput = document.addEventListener("submit", function (e) {
+        e.preventDefault();
+       let unHolder = String(userInputField.value.toLowerCase());
+       let firstUserNameLetter = unHolder[0].toUpperCase();    
+       playerOne.username = unHolder.replace(unHolder[0], firstUserNameLetter);
+       
+       userInputField.value = "";
+       userTextField.remove();
+       let welcomeText1 = document.createElement("h2");
+       let welcomeText2 = document.createElement("p");
+       let welcomeUser = document.createElement("span");
+       let endWelcomeText1 = document.createElement("span"); 
+       welcomeText1.textContent = "Welcome ";
+        welcomeUser.textContent = playerOne.username;
+        endWelcomeText1.textContent = "!";
+        welcomeText2.textContent ="Are you ready to play Rock Paper Scissors with the "+ playerTwo.username + "?"; 
+       welcomeUser.classList.add("username");
+
+       welcomeText1.appendChild(welcomeUser);
+       welcomeText1.appendChild(endWelcomeText1);
+        userInteractionDiv.appendChild(welcomeText1);
+       userInteractionDiv.appendChild(welcomeText2);
+
+    })
     
-
+        
 
 //logic for rock paper scissors implementation
     //additional fun flare: create two user names for each player.
-const PLAYER1 = "Computer";
-//Error checking to ensure that the username is not empty or too long.
-let playerUserName = "";
 
-function getUserName() {
-    do {
-        playerUserName = prompt("What is your name?").toLowerCase(); //Cleaning the data.
-        }
-    while (playerUserName.length === 0 || playerUserName.length > 30)
-    let firstUserNameLetter = playerUserName[0].toUpperCase();    
-    return firstUserNameLetter;
-}
-//let firstUserNameLetter = getUserName();
-//const PLAYER2 = playerUserName.replace(playerUserName[0], firstUserNameLetter);
+//Error checking to ensure that the username is not empty or too long.
 
 //uncommentconsole.log("Welcome " + PLAYER2 +"! \n\nAre you ready to play Rock Paper Scissors with the " + PLAYER1 + "?");
 

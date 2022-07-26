@@ -1,4 +1,4 @@
-
+const gameElmnts = {};
 //lets find the query selector elements
 //first my goal is to include hover functionality 
 
@@ -46,10 +46,14 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
         e.preventDefault();
        let unHolder = String(userInputField.value.toLowerCase());
        let firstUserNameLetter = unHolder[0].toUpperCase();    
-       playerOne.username = unHolder.replace(unHolder[0], firstUserNameLetter);
-       
+       let unCheck = unHolder.replace(unHolder[0], firstUserNameLetter);
+       if (unCheck.length > 15) { 
+        unCheck = unCheck.slice(0, 15);
+       } 
+       playerOne.username = unCheck;
        userInputField.value = "";
        userTextField.remove();
+       let welcomeContainer = document.createElement("div");
        let welcomeText1 = document.createElement("h2");
        let welcomeText2 = document.createElement("p");
        let welcomeUser = document.createElement("span");
@@ -62,11 +66,73 @@ buttonScissors.addEventListener('mouseout', () => h1Scissors.classList.remove("c
 
        welcomeText1.appendChild(welcomeUser);
        welcomeText1.appendChild(endWelcomeText1);
-        userInteractionDiv.appendChild(welcomeText1);
-       userInteractionDiv.appendChild(welcomeText2);
-
+        welcomeContainer.appendChild(welcomeText1);
+       welcomeContainer.appendChild(welcomeText2);
+       userInteractionDiv.appendChild(welcomeContainer);
+       gameElmnts.welcomeContainer = welcomeContainer;
+       setTimeout(() => {
+        gameElmnts.button = document.createElement("button");
+        gameElmnts.button.classList.add("startButton");
+        gameElmnts.button.textContent = "START!!";
+       welcomeContainer.appendChild(gameElmnts.button);
+       }, "1000")
+     userInteractionDiv.append();
+       
+    
     })
     
+   let meet=   document.querySelector(".startbutton");
+
+
+    let bc = userInteractionDiv.addEventListener("click", function (event) {
+        let startB = event.target; 
+        if (startB.tagName === "BUTTON" && startB.classList.contains("startButton"))
+        {
+            gameElmnts.welcomeContainer.remove();
+            rpsContainer.classList.remove("hidden");
+            gameElmnts.gameScoreBox = document.createElement("div");
+            gameElmnts.scoreBoxWelText = document.createElement("span");
+            
+            gameElmnts.scoreBoxUserContainer= document.createElement("div");
+            gameElmnts.scoreBoxUserContainerP1= document.createElement("span");
+            gameElmnts.scoreBoxUserContainerP2 = document.createElement("span");
+            gameElmnts.scoreBoxUNamesP1 = document.createElement("span");
+            gameElmnts.scoreBoxScoreP1 = document.createElement("div");
+            gameElmnts.scoreBoxUNamesP2 = document.createElement("span");
+            gameElmnts.scoreBoxScoreP2 = document.createElement("div");
+            gameElmnts.roundBox = document.createElement("div");
+            
+            gameElmnts.scoreBoxUserContainer.classList.add("flex");
+            gameElmnts.scoreBoxWelText.textContent = "Scores: ";
+            gameElmnts.scoreBoxUNamesP2.textContent = playerTwo.username;
+            gameElmnts.scoreBoxUNamesP1.classList.add("playerOne");
+            gameElmnts.scoreBoxUNamesP2.classList.add("playerTwo");
+            gameElmnts.scoreBoxUNamesP1.textContent = playerOne.username;
+            gameElmnts.scoreBoxScoreP1.textContent = 0;
+            gameElmnts.scoreBoxScoreP2.textContent = 0;
+            gameElmnts.roundBox.textContent = "Round "+ 0;
+            
+            
+            gameElmnts.scoreBoxUserContainerP1.appendChild(gameElmnts.scoreBoxUNamesP1);
+            gameElmnts.scoreBoxUserContainerP1.appendChild(gameElmnts.scoreBoxScoreP1);
+            
+            gameElmnts.scoreBoxUserContainerP2.appendChild(gameElmnts.scoreBoxUNamesP2);
+            gameElmnts.scoreBoxUserContainerP2.appendChild(gameElmnts.scoreBoxScoreP2);
+            
+            
+            gameElmnts.scoreBoxUserContainer.appendChild(gameElmnts.scoreBoxUserContainerP1);
+            
+            gameElmnts.scoreBoxUserContainer.appendChild(gameElmnts.scoreBoxUserContainerP2);
+            
+            gameElmnts.gameScoreBox.appendChild(gameElmnts.scoreBoxWelText);
+            
+            gameElmnts.gameScoreBox.appendChild(gameElmnts.scoreBoxUserContainer);
+
+            gameElmnts.gameScoreBox.appendChild(gameElmnts.roundBox);
+            
+            userInteractionDiv.appendChild(gameElmnts.gameScoreBox);
+        }
+    })
         
 
 //logic for rock paper scissors implementation

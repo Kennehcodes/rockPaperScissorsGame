@@ -3,13 +3,17 @@ body {
     padding: 0;
 }
 /*all display flex properties not in a media query*/ 
-.card, 
+.card, .flex,
 .flex-main-container, 
 .rock-paper-scissors-container, 
 .page-container, 
 .card-container {
     display: flex;
 }  
+.flex {
+    color: pink;
+justify-content: space-around;
+}
 
 /*all flex columns*/
 .flex-main-container,
@@ -190,6 +194,8 @@ text-align: center;
     }
 
     .userInteraction {
+        padding: 0;
+        margin: 0;
        
     }
     .paddingTop {
@@ -198,7 +204,15 @@ text-align: center;
 }
 
 .username {
-    color: red;
+    color: blue;
+}
+
+.playerOne {
+    color: purple;
+}
+
+.playerTwo {
+    color: orange;
 }
 
 
@@ -208,7 +222,9 @@ text-align: center;
 }
 
 
-
+.startButton {
+    color: white;
+}
 
 
 

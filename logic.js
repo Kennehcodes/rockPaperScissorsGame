@@ -472,73 +472,91 @@ function changeMaxWinningScore(num) {
 
 
 
-rock.clicked = rock.img.addEventListener("click", function (event) {
-    let roundStart = event.target;
-    removeP1ColorClasses();
-    removeP2ColorClasses();
-    addColorP1(rock);
-    if (
-        roundStart.tagName === "IMG" &&
-        roundStart.classList.contains("rockStart")
-    ) {
-        if (!ifGameIsOver()) {
-            sounds.rock.play();
-            gamePlay(event);
-            if (playerOne.score === gameElmnts.winningScore || playerTwo.score === gameElmnts.winningScore)  {
-                clearGame();
-            }
-         } 
-         else {
-            askIfWantToPlayAgain();
+// rock.clicked = rock.img.addEventListener("click", function (event) {
+//     let roundStart = event.target;
+//     removeP1ColorClasses();
+//     removeP2ColorClasses();
+//     addColorP1(rock);
+//     if (
+//         roundStart.tagName === "IMG" &&
+//         roundStart.classList.contains("rockStart")
+//     ) {
+//         if (!ifGameIsOver()) {
+//             sounds.rock.play();
+//             gamePlay(event);
+//             if (playerOne.score === gameElmnts.winningScore || playerTwo.score === gameElmnts.winningScore)  {
+//                 clearGame();
+//             }
+//          } 
+//          else {
+//             askIfWantToPlayAgain();
+//         }
+//     }}
+// );
+// paper.clicked = paper.img.addEventListener("click", function (event) {
+//     let roundStart = event.target;
+//     removeP1ColorClasses();
+//     removeP2ColorClasses();
+//     addColorP1(paper);
+//     if (
+//         roundStart.tagName === "IMG" &&
+//         roundStart.classList.contains("paperStart")
+//     ) {
+//         if (!ifGameIsOver()) {
+//             sounds.paper.play();
+//             gamePlay(event);
+//             if (playerOne.score === gameElmnts.winningScore || playerTwo.score === gameElmnts.winningScore)  {
+//                 clearGame();
+//             }
+//          } 
+//          else {
+//             askIfWantToPlayAgain();
+//         }
+//         }
+// });
+
+
+// scissors.clicked = scissors.img.addEventListener("click", function (event) {
+//     let roundStart = event.target;
+//     removeP1ColorClasses();
+//     removeP2ColorClasses();
+//     addColorP1(scissors);
+//     if (
+//         roundStart.tagName === "IMG" &&
+//         roundStart.classList.contains("scissorsStart")
+//     ) {
+//         if (!ifGameIsOver()) {
+//             sounds.scissors.play();
+//             gamePlay(event);
+//             if (playerOne.score === gameElmnts.winningScore || playerTwo.score === gameElmnts.winningScore)  {
+//                 clearGame();
+//             }
+//          } 
+//          else {
+//             askIfWantToPlayAgain();
+//          }
+//         }
+// });
+
+function runGameLogic(e) {
+    
+    if (playerOne.score >= gameElmnts.winningScore || playerTwo.score >= gameElmnts.winningScore) {
+        //remove event handler
+        //toggle css class to remove hover effects, or reflect fact that game ended
+        UI.rPSC.removeEventListener('click', lilGame);
+        console.log("event handler was deleted. wow!")
+    } else {
+     //game is still in play
+        
+        if (e.target === rock.img || e.target === paper.img || e.target === scissors.img) {
+                console.log("valid move");
+                playerOne.score++;
+        } else {
+            console.log("not a move");
         }
-    }}
-);
-paper.clicked = paper.img.addEventListener("click", function (event) {
-    let roundStart = event.target;
-    removeP1ColorClasses();
-    removeP2ColorClasses();
-    addColorP1(paper);
-    if (
-        roundStart.tagName === "IMG" &&
-        roundStart.classList.contains("paperStart")
-    ) {
-        if (!ifGameIsOver()) {
-            sounds.paper.play();
-            gamePlay(event);
-            if (playerOne.score === gameElmnts.winningScore || playerTwo.score === gameElmnts.winningScore)  {
-                clearGame();
-            }
-         } 
-         else {
-            askIfWantToPlayAgain();
-        }
-        }
-});
-
-
-scissors.clicked = scissors.img.addEventListener("click", function (event) {
-    let roundStart = event.target;
-    removeP1ColorClasses();
-    removeP2ColorClasses();
-    addColorP1(scissors);
-    if (
-        roundStart.tagName === "IMG" &&
-        roundStart.classList.contains("scissorsStart")
-    ) {
-        if (!ifGameIsOver()) {
-            sounds.scissors.play();
-            gamePlay(event);
-            if (playerOne.score === gameElmnts.winningScore || playerTwo.score === gameElmnts.winningScore)  {
-                clearGame();
-            }
-         } 
-         else {
-            askIfWantToPlayAgain();
-         }
-        }
-});
+    }
+}
 
 
 
-
-
+UI.gameHandler = UI.rPSC.addEventListener("click", runGameLogic);

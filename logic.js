@@ -1,6 +1,6 @@
 //****-----------VARIABLES----------------------****
 //----------(Constants)
-const gameElmnts = { round: 0, winningScore: 10 };
+const gameElmnts = { round: 0, winningScore: 3 };
 //lets find the query selector elements
 //first my goal is to include hover functionality
 const sounds = {rock: new Audio("/sounds/rock.wav"), paper: new Audio("/sounds/paper.wav"), scissors: new Audio("/sounds/scissors.wav")};
@@ -49,6 +49,12 @@ function removeColorP2(nameOfObject) {
     nameOfObject.h1.classList.remove("p2");
 }
 
+function addColorP1(nameOfObject) {
+    nameOfObject.h1.classList.add("p1");
+}
+function removeColorP1(nameOfObject) {
+    nameOfObject.h1.classList.remove("p1");
+}
 
 function getUserName() {
     UI.namePromptContainer = document.createElement("div");
@@ -152,6 +158,7 @@ function removeReadyClass() { //removes the ready to start class --utilize at en
     scissors.button.classList.remove("scissorsStart");
     rock.button.classList.remove("rockStart");
 }
+
 function createScoreAndPlayerBox() {
     //containers for the round info
     UI.scoreFlexContainer = document.createElement("div"); //flex object that contains the round and # for round inside
@@ -179,6 +186,7 @@ function createScoreAndPlayerBox() {
     UI.playersFlexContainer.classList.add("flex", "spaceBt");
     UI.p1SpanForName.classList.add("playerOne");
     UI.p2SpanForName.classList.add("playerTwo");
+    UI.rText.classList.add("gap");
 
     //addition of textContent
     UI.p1SpanForName.textContent = playerOne.username;
@@ -207,11 +215,33 @@ function createScoreAndPlayerBox() {
     UI.uiDiv.appendChild(UI.scoreFlexContainer);
     UI.uiDiv.appendChild(UI.playersFlexContainer);
 }
+function createUIStatusBar() {
+UI.sbDiv = document.createElement("div");
+UI.sb1P = document.createElement("p");
+UI.sb1P.textContent = "Pick rock, paper or scissors to start!";
+UI.sbDiv.classList.add("notifications");
+UI.sbDiv.appendChild(UI.sb1P);
+UI.mainContent = document.querySelector("#mainContent");
+UI.mainContent.insertBefore(UI.sbDiv, UI.rPSC);
 
+}
+function createPlayAgainButton() {
+    UI.paDiv = document.createElement("div");
+    UI.pAbutton = document.createElement("button");
+    UI.paDiv.classList.add("paDiv");
+    UI.pAbutton.classList.add("pAgainButton");
+    UI.pAbutton.textContent = "Play again?";
+    UI.paDiv.appendChild(UI.pAbutton);
+    UI.mainContent.appendChild(UI.paDiv);
+    UI.href = document.location.href;
+UI.pAbutton.addEventListener("click", location.href=UI.href);
+
+}
 function startGameUI() {
     clearWelcomeContainer();
     showRockPaperScissorsIcons();
     addReadyClass();
+    createUIStatusBar();
     createScoreAndPlayerBox();
 }
 //-------(functions relating to game logic)
@@ -251,7 +281,8 @@ function isWinner(winnerPlayerMove, loserPlayerMove) { //determines if 1st playe
 function gamePlay(event) {
     playerOne.currentMove = event.target.id; //gets user move
     playerTwo.currentMove = getComputerChoice(); //gets pc move
-    setTimeout(delayCompChoice, 1000);
+    setTimeout(delayCompChoice, 500);
+    setTimeout(() => UI.sb1P.innerText = playerTwo.username + " plays " + playerTwo.currentMove + ".", 500);
     gameElmnts.round++; //updates game round
     UI.rNum.innerText = gameElmnts.round; //updates round text on DOM
     gameElmnts.isTie = isTie(playerOne.currentMove, playerTwo.currentMove); //checks for a tie  
@@ -268,17 +299,22 @@ function gamePlay(event) {
     );
     if (playerOne.isRoundWinner) { //if p1 is round winner the score for p1 is updated
         playerOne.score++;
+        setTimeout(()=> UI.sb1P.innerText = "You won this round", 100);
         UI.p1DivForScore.innerText = playerOne.score;
     } else if (playerTwo.isRoundWinner) { //if p2 is round winner the score for p2 is updated
         playerTwo.score++;
+        setTimeout(()=> UI.sb1P.innerText = "The "+ playerTwo.username + " won this round." , 1500);
         UI.p2DivForScore.innerText = playerTwo.score;
     } 
 
+    } 
+    else {
+    setTimeout(()=> UI.sb1P.innerText = "This round ended in a tie.", 1500);
+    //=====music?
+    console.log("tie space only") 
     }
-        
 
-
-    console.log("tie space only")
+ 
     }
 //}
 //}
@@ -305,7 +341,74 @@ function ifGameIsOver() {
     }
 }
 
+function endGameSummary(){
+    UI.sb1P.innerText = `${playerOne.username} Thanks for playing!\n your final
+    score was ${playerOne.score}`;
+    
+}
+//-------more functions
+function removeP1ColorClasses(){
+    if (rock.h1.classList.contains("p1")){
+       rock.h1.classList.remove("p1");
+    }  
+    if (paper.h1.classList.contains("p1")){
+       paper.h1.classList.remove("p1");
+    }  
+    if (scissors.h1.classList.contains("p1")){
+       scissors.h1.classList.remove("p1");
+    }   
+   }
+function removeP2ColorClasses(){
+    if (rock.h1.classList.contains("p2")){
+       rock.h1.classList.remove("p2");
+    }  
+    if (paper.h1.classList.contains("p2")){
+       paper.h1.classList.remove("p2");
+    }  
+    if (scissors.h1.classList.contains("p2")){
+       scissors.h1.classList.remove("p2");
+    }   
+}
+
+function delayCompChoice() {
+    
+    function showComputersChoiceAsSideEffects(computersMove) {
+        console.log(computersMove);
+        let checker = ["paper", "scissors", "rock"]
+        for (let i of checker) {
+        if (computersMove === i) {
+            sounds[i].play();
+            console.log(i);
+            let x = getMePlayVariable(playerTwo);
+            addColorP2(x);   
+        }
+    }
+    }
+    showComputersChoiceAsSideEffects(playerTwo.currentMove)
+}
+
+
+function clearOldRoundData() {
+    clearStoredScores();
+    clearRounds();
+}
+function clearStoredScores() {
+    playerOne.score = 0;
+    playerTwo.score = 0;
+}
+function clearRounds() {
+    gameElmnts.round = 0;
+}
+
+
+
+function delGame() {
+    removeReadyClass(); //removes the ready start class
+    clearScoreAndPlayerBox(); //hides scores
+    hideRockPaperScissorsIcons(); //hides the icons
+}
 //****----------EVENT LISTENERS-------****
+
 rock.button.addEventListener("mouseover", () => addColor(rock) ); //following events are for the mouseover color changes
 paper.button.addEventListener("mouseover", () => addColor(paper));
 scissors.button.addEventListener("mouseover", () => addColor(scissors));
@@ -325,89 +428,21 @@ let startButtonIsThereCheck = UI.uiDiv.addEventListener(
 //****---------Function Calls
 getUserName();
 
-
-///to creates--
-
-
-//check if max round have been met->
-//IF MAX ROUNDS has been met: if so, delete and add a new reset button
-
-//we need to do two things->
-//record the move
-//update the onclick css color
-//add other effects? sound?
-//get the computer's move
-//update the onclick css color
-//evaluate the win
-//flash the result? maybe?
-//sound?
-
-function delayCompChoice() {
-    
-function showComputersChoiceAsSideEffects(computersMove) {
-    console.log(computersMove);
-    let checker = ["paper", "scissors", "rock"]
-    for (let i of checker) {
-    if (computersMove === i) {
-        sounds[i].play();
-        console.log(i);
-        let x = getMePlayVariable(playerTwo);
-        addColorP2(x);
-
-     
-    }
-}
-}
-showComputersChoiceAsSideEffects(playerTwo.currentMove)
-}
-
-
-
-
-function startNewRound() {
-    clearStoredScores();
-    clearRounds();
-    
-}
-function clearStoredScores() {
-    playerOne.score = 0;
-    playerTwo.score = 0;
-}
-
-function clearRounds() {
-    gameElmnts.round = 0;
-}
-
-function changeMaxWinningScore(num) { 
-    //allows for functionality if we want to dynamically allow user to pick
-    //what score to play to
-    gameElmnts.winningScore = num;
-}
-
-
-//lets make
-function startGameFlow() {
-    getUserName(); //creates username prompts
-}
-
 function askIfWantToPlayAgain() {
     console.log("one more time?");
-    restartGame();
-
-       
-        startNewRound();
-        startGameFlow();
-
+    let waitBeforeDeletion = setTimeout(clearGame, 3000);
+   
 }
 
-
-//update the score board
-function restartGame() {
-    removeReadyClass(); //removes the ready start class
-    clearScoreAndPlayerBox(); //hides scores
-    hideRockPaperScissorsIcons(); //hides the icons
+function clearGame(){
+    delGame();
+    clearOldRoundData();
+    setTimeout(endGameSummary, 2000);
+    createPlayAgainButton();
 }
-
+///to creates--
+//flash the result? maybe?
+//sound?
     //what I want to happen is a overview flash of the winner and round info;
     //maybe keep a log of how many times the computer threw rock vs you?
     //keep a log of how many times the player one threw rock
@@ -417,9 +452,31 @@ function restartGame() {
     //additional options change game round play until functions
     //in order to accomplish this Ill need to make my code modula
     //-------(for gameplay)
+
+
+
+
+
+
+
+
+
+function changeMaxWinningScore(num) { 
+    //allows for functionality if we want to dynamically allow user to pick
+    //what score to play to
+    gameElmnts.winningScore = num;
+}
+
+
+//lets make
+
+
+
 rock.clicked = rock.img.addEventListener("click", function (event) {
     let roundStart = event.target;
+    removeP1ColorClasses();
     removeP2ColorClasses();
+    addColorP1(rock);
     if (
         roundStart.tagName === "IMG" &&
         roundStart.classList.contains("rockStart")
@@ -427,6 +484,9 @@ rock.clicked = rock.img.addEventListener("click", function (event) {
         if (!ifGameIsOver()) {
             sounds.rock.play();
             gamePlay(event);
+            if (playerOne.score === gameElmnts.winningScore || playerTwo.score === gameElmnts.winningScore)  {
+                clearGame();
+            }
          } 
          else {
             askIfWantToPlayAgain();
@@ -435,7 +495,9 @@ rock.clicked = rock.img.addEventListener("click", function (event) {
 );
 paper.clicked = paper.img.addEventListener("click", function (event) {
     let roundStart = event.target;
+    removeP1ColorClasses();
     removeP2ColorClasses();
+    addColorP1(paper);
     if (
         roundStart.tagName === "IMG" &&
         roundStart.classList.contains("paperStart")
@@ -443,6 +505,9 @@ paper.clicked = paper.img.addEventListener("click", function (event) {
         if (!ifGameIsOver()) {
             sounds.paper.play();
             gamePlay(event);
+            if (playerOne.score === gameElmnts.winningScore || playerTwo.score === gameElmnts.winningScore)  {
+                clearGame();
+            }
          } 
          else {
             askIfWantToPlayAgain();
@@ -453,7 +518,9 @@ paper.clicked = paper.img.addEventListener("click", function (event) {
 
 scissors.clicked = scissors.img.addEventListener("click", function (event) {
     let roundStart = event.target;
+    removeP1ColorClasses();
     removeP2ColorClasses();
+    addColorP1(scissors);
     if (
         roundStart.tagName === "IMG" &&
         roundStart.classList.contains("scissorsStart")
@@ -461,6 +528,9 @@ scissors.clicked = scissors.img.addEventListener("click", function (event) {
         if (!ifGameIsOver()) {
             sounds.scissors.play();
             gamePlay(event);
+            if (playerOne.score === gameElmnts.winningScore || playerTwo.score === gameElmnts.winningScore)  {
+                clearGame();
+            }
          } 
          else {
             askIfWantToPlayAgain();
@@ -469,14 +539,6 @@ scissors.clicked = scissors.img.addEventListener("click", function (event) {
 });
 
 
-function removeP2ColorClasses(){
- if (rock.h1.classList.contains("p2")){
-    rock.h1.classList.remove("p2");
- }  
- if (paper.h1.classList.contains("p2")){
-    paper.h1.classList.remove("p2");
- }  
- if (scissors.h1.classList.contains("p2")){
-    scissors.h1.classList.remove("p2");
- }   
-}
+
+
+

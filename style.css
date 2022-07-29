@@ -215,8 +215,7 @@ body {
 .card-container {
   width: 20vw;
   height: auto;
-  flex-shrink: 0;
-  flex-grow: 1;
+  flex: 1 1 1px;
   padding: 0;
 }
 
@@ -334,8 +333,8 @@ img {
     padding: 0 0.2rem 0 0.2rem;
     width: 50%;
     height: auto;
-    
-    flex: 1 1 1px;
+    flex-shrink: 0;
+    flex-grow: 0;
     align-self: center;
   }
 

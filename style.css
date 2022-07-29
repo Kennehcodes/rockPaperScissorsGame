@@ -7,9 +7,7 @@ html {
 * {
   box-sizing: border-box;
 }
-body {
-  min-height: 100vh;
-}
+
 .overviewOl {
   list-style: none;
   padding: 0.4rem;
@@ -215,7 +213,7 @@ body {
 .card-container {
   width: 20vw;
   height: auto;
-  flex: 1 1 1px;
+    flex: 1 1 1px;
   padding: 0;
 }
 
@@ -356,3 +354,9 @@ img {
   }
 }
 
+@media (min-width: 900px) {
+  .card-container {
+    max-width: 13vw;
+    height: auto;
+  }
+}

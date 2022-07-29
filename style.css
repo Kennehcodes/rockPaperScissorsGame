@@ -21,7 +21,7 @@ footer {
 .flex-main-container, 
 .rock-paper-scissors-container, 
 .page-container, 
-.card-container {
+.card-container, .overview {
     display: flex;
 }  
 .gap {
@@ -284,9 +284,17 @@ text-align: center;
     color: white;
 }
 
+td {
+    margin: 1rem;
+    padding: 1.5rem;
+    text-align: left;
+    
+}
 
-
-
+.final {
+    font-weight: 700;
+    color: green;
+}
 .rpsH1Hover {
     color: #85a1ac;
 }
@@ -305,4 +313,23 @@ color: blue;
 .tie {
 color: red;
 text-shadow: 3px 5PX  BLACK;
+}
+
+.overview {
+    flex-direction: column;
+}
+
+.overviewLi {
+}
+
+.overviewOl {
+    list-style: none;
+    padding: 0.4rem;
+}
+
+.overviewFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: justify;
 }

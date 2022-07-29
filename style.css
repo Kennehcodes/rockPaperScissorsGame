@@ -356,9 +356,3 @@ img {
   }
 }
 
-@media (min-width: 900px) {
-  .card-container {
-    max-width: 13vw;
-    height: auto;
-  }
-}

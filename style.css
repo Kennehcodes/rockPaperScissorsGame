@@ -1,369 +1,375 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-}
-
-body{
-  display: flex;
-  flex-direction: column;
+body, html {
+    margin: 0;
+    padding:0;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
-g
+body {
+    min-height: 100vh;
+}
 .overviewOl {
-  list-style: none;
-  padding: 0.4rem;
+    list-style: none;
+    padding: 0.4rem;
 }
 
 .overviewFlex {
-  flex-direction: row;
-  justify-content: flex-start;
-  text-align: justify;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: justify;
 }
 
 .flex-footer-ul {
-  list-style: none;
-  gap: 20px;
+    list-style: none;
+    gap: 20px;
 }
 
 .weaponNotInPlay {
-  display: none;
+    display: none;
 }
-/*all display flex properties not in a media query*/
-.card,
-.flex,
-.notifications,
-.flex-main-container,
-.rock-paper-scissors-container,
-.page-container,
-.card-container,
-.overview,
-.flex-footer-ul,
-.overviewFlex,
-.paDiv, footer {
-  display: flex;
+/*all display flex properties not in a media query*/ 
+.card, .flex, body, .notifications,
+.flex-main-container, 
+.rock-paper-scissors-container, 
+.page-container, 
+.card-container, .overview, .flex-footer-ul, .overviewFlex, .paDiv {
+    display: flex;
 }
 
 /*all flex columns*/
 .flex-main-container,
-.card-container,
-.overview,
-body {
-  flex-direction: column;
+.card-container, .overview, body {
+    flex-direction: column;
 }
 
 /*flex justify content rules*/
 
-.cent,
-.card,
-.rock-paper-scissors-container,
-.paDiv,
-.notifications,
-.flex-footer-ul,
-.flex, footer {
-  justify-content: center;
+.cent, .card, .rock-paper-scissors-container, 
+.paDiv, .notifications, .flex-footer-ul, .flex {
+    justify-content: center;
 }
 
 .spaceBt {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .page-container {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 footer {
-  margin-top: auto;
-  align-self: center;
-  width: 100%;
-  background-color: #bcc4db;
-  text-align: center;
-  padding: 0.1em;
+    margin-top: auto;
+    align-self: center;
+   width: 100%;
+    background-color: #bcc4db;
+    text-align: center;
+    
 
 }
 
-.username,
-.playerOne,
-.p1 {
-  color: #28c2ff;
+
+.username, .playerOne, .p1 {
+    color: #28c2ff;
 }
 
-.p2,
-.playerTwo {
-  color: #61e786;
+.p2, .playerTwo {
+    color: #61e786;
+
 }
 
 .tie {
-  color: #33f7cd;
+color: #8bf733;
+
 }
+
+
+
 
 .subtext {
-  font-family: "Karla", sans-serif;
-  font-weight: 500;
+    font-family: 'Karla', sans-serif;
+    font-weight: 500;
 }
 
+
 .startButton {
-  color: #7880b5;
-  padding: 1em;
-  border-radius: 0.3rem;
-  background-color: white;
-  border-color: greenyellow;
+    color: #7880b5;
+    padding: 1em;
+    border-radius: 0.3rem;
+    background-color: white;
+    border-color: greenyellow;
 }
 
 .startButton:hover {
-  background-color: #e8ffbe;
-  color: black;
+    background-color: #e8ffbe;
+    color: black;
 }
 
+
 td {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
+    margin: 1rem;
+    padding: 1.5rem;
+    text-align: left;
 }
 
 .final {
-  font-weight: 700;
-  color: #b1cc74;
+    font-weight: 700;
+    color: #b1cc74;
 }
 .rpsH1Hover {
-  color: #85a1ac;
+    color: #85a1ac;
 }
 
+
 .flex-footer-ul > li {
-  color: white;
-  font-family: "Karla", sans-serif;
-  font-weight: 500;
+    color: white;
+    font-family: 'Karla', sans-serif;
+    font-weight: 500;
 }
 
 a {
-  color: white;
+    color: white;
 }
 a:hover {
-  color: #6380b6;
-}
+    color: #6380b6;
+} 
+
 
 .gap {
-  margin-right: 0.6rem;
+    margin-right: 0.6rem;
 }
 .flex {
-  padding: 0rem;
-  font-weight: 700;
-  color: #6987c9;
-  font-size: 1.2em;
+    padding: 0rem;
+    font-weight: 700;
+    color: #6987c9;
+    font-size: 1.2em;;
+
 }
 body {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 .notifications {
-  padding: 2rem;
-  background-color: #7880b5;
-  margin: 2rem;
-  color: white;
-  font-size: 1rem;
-  font-family: "Fredoka One", cursive;
-  box-shadow: #bcc4db 5px 5px;
+    background-color:#7880b5;
+    margin: 1rem;
+    display: border-box;
+    height: 3em;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Fredoka One', cursive;
+    box-shadow: #bcc4db 5px 5px;
 }
 
 .title {
-  font-family: "Nanum Pen Script", cursive;
-  text-align: center;
-  color: #bbb6cf;
-  font-size: 5rem;
-  padding: 0;
-  margin: 0;
-  line-height: 0.7;
+    font-family: 'Nanum Pen Script', cursive;
+    text-align: center;
+    color: #bbb6cf;
+    font-size: 5rem;
+    padding: 0;
+    margin: 0;
+    line-height: 0.7;
 }
 
 .sidebar {
-  flex-basis: 15%;
-  width: 15%;
+    flex-basis: 15%;
+    width: 15%;
+      
 }
-.pAgainButton,
-.nameInputButton {
-  color: #7880b5;
-  padding: 0.4em;
-  border-radius: 0.2rem;
-  background-color: white;
-  border-color: greenyellow;
-}
-
-.pAgainButton:hover,
-.nameInputButton:hover {
-  background-color: #e8ffbe;
-  color: black;
+.pAgainButton, .nameInputButton {
+    color: #7880b5;
+    padding: 0.4em;
+    border-radius: 0.2rem;
+    background-color: white;
+    border-color: greenyellow;
 }
 
-.header,
-.userInteraction {
-  padding: 1.5rem;
-  margin: 1.5rem;
-  align-self: center;
+.pAgainButton:hover , .nameInputButton:hover{
+    background-color: #e8ffbe;
+    color: black;
+}
+
+
+.header, .userInteraction {
+    padding: 1.5rem;
+    margin: 1.5rem;
+    align-self: center;
 }
 .userInteraction {
-  padding: 0 1rem 0rem 1rem;
+    padding: 0 1rem 0rem 1rem;
 }
 
 .rock-paper-scissors-container {
-  background-color: #fff;
-  border-radius: 25px 25px 25px 25px;
-  gap: 1em;
-  margin: 1rem;
-  flex-basis: auto;
-  padding: 1rem;
+    background-color: #fff;
+    border-radius: 25px 25px 25px 25px;
+    gap: 1em;
+    margin: 1rem;
+    flex-basis: auto;
+    padding: 1rem;
 }
 .card-container {
-  width: 20vw;
-  height: auto;
-    flex: 1 1 1px;
-  padding: 0;
+    width: 20vw;
+    height: auto;
+    flex-shrink: 0;
+    flex-grow: 1; 
+    padding: 0;
+    
 }
 
 .card {
-  border-radius: 100%;
-  padding: 0px;
-  transition: width 2s, height 2s, background-color 2s, transform 2s;
+    border-radius: 100%;
+    padding: 0px;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 .hoverOnIcon:hover {
-  background-color: #edf6f9;
-  transition: cubic-bezier(0.47, 0, 0.745, 0.715);
-  width: auto;
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
+    background-color: #edf6f9;
+    transition: cubic-bezier(0.47, 0, 0.745, 0.715);
+    
+ }
+ img {
+    max-width: 100%;
+    height: auto;
+ }
 .weapons {
-  margin: 0px;
-  padding: 0px;
-  flex-shrink: 0;
-  flex-grow: 0;
+    margin: 0px;
+    padding: 0px;
+    flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .userInteraction {
-  color: black;
-  padding-top: 0;
-  margin-top: 0;
-  text-align: center;
+
+    color: black;
+    padding-top: 0;
+    margin-top: 0;
+    text-align: center;
 }
 
 .center {
-  align-self: center;
-  flex-basis: 100%;
-  flex-shrink: 1;
-  flex-grow: 0;
-  max-width: 100%;
-  gap: 1;
-  margin-bottom: 0.2rem;
+    align-self: center;
+    flex-basis: 100%;
+    flex-shrink: 1;
+    flex-grow: 0;
+    max-width: 100%;
+    gap: 1;
+    margin-bottom: 0.2rem;
 }
 .form {
-  display: flex;
+    display: flex;
 
-  gap: 0.4rem;
-  justify-content: baseline;
-  align-items: flex-end;
+    gap: 0.4rem;
+    justify-content: baseline;
+    align-items: flex-end ;
 }
-
+    
 .formDiv {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .paddingTop {
-  padding-top: 0.5rem;
-  margin-top: 10px;
+    padding-top: 0.5rem;
+    margin-top: 10px;
+
 }
 .hidden {
-  display: none;
+    display: none;
 }
 
 .animate {
-  animation: title-screen 3s cubic-bezier(0.64, 0, 0.78, 0) 0s 1 normal none;
+
+    animation: title-screen 3s cubic-bezier(0.64, 0, 0.78,0) 0s 1 normal none;
 }
 
 @keyframes title-screen {
-  0%,
-  100% {
+0%, 
+100%{
     transform: translateX(0%);
     transform-origin: 50% 50%;
-  }
+}
 
-  15% {
+15% {
     transform: translateX(-30px) rotate(-6deg);
-  }
+}
 
-  30% {
+30% {
     transform: translateX(15px) rotate(6deg);
-  }
-  45% {
+}
+45% {
     transform: translateX(-15px) rotate(-3.6deg);
-  }
-  60% {
+    }
+60% {
     transform: translateX(9px) rotate(2.4deg);
-  }
-  75% {
+} 
+75% {
     transform: translateX(-6px) rotate(-1.2deg);
-  }
+}
 }
 
-@media (max-width: 600px) {
-  .sidebar {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 15%;
-    width: 15%;
-  }
 
-  .header {
-    padding-bottom: 0;
-  }
+    
 
-  .main-content {
-    flex-direction: column;
-    flex-shrink: 0;
-    flex-basis: 70%;
-    justify-content: center;
-    width: 70%;
-  }
-  .title {
-    font-size: 3rem;
-  }
-  .card-container {
-    flex-direction: column;
-    padding: 0 0.2rem 0 0.2rem;
-    width: 50%;
-    height: auto;
-    flex-shrink: 0;
-    flex-grow: 0;
-    align-self: center;
-  }
+@media(max-width: 600px){
+    .sidebar {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 15%;
+        width: 15%;
+      
+    }
+   
+    .header {
+        padding-bottom: 0;
+    }
+    
+    .main-content {
+        flex-direction: column;
+        flex-shrink: 0;
+        flex-basis: 70%;
+        justify-content: center;
+        width: 70%
+    }   
+    .title {
+        font-size: 3rem;
+    }
+    .card-container {
+        flex-direction: column;
+        padding: 0 0.2rem 0 0.2rem;
+        width: 50%;
+        height: auto;
+        flex-shrink: 0;
+        flex-grow: 0; 
+        align-self: center;
+    }
+    
+    .card {
+        flex-direction: column;
+        align-content: center;
+    }
+    .rock-paper-scissors-container {
+        
+        justify-content: center;
+        flex-wrap:wrap ;
 
-  .card {
-    flex-direction: column;
-    align-content: center;
-  }
-  .rock-paper-scissors-container {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+    }
 
-  .userInteraction {
-    padding: 0;
-    margin: 0;
-  }
-  .paddingTop {
-    width: 40vw;
-  }
+    .userInteraction {
+        padding: 0;
+        margin: 0;
+       
+    }
+    .paddingTop {
+        width: 40vw;
+    }
+
+    
 }
 
-@media (min-width: 900px) {
-  .card-container {
-    max-width: 13vw;
-    height: auto;
-  }
+
+@media(min-width: 900px){
+
+    .card-container
+    {
+        max-width: 13vw;
+        height: auto
+    }
 }

@@ -1,79 +1,77 @@
 <!DOCTYPE html>
 <html>
-    <head> 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">  
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
-         <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="UTF-8">
-        <title>Rock Paper Scissors</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-    
-        <div class="page-container">
-            <div class="column-container sidebar">
-            
-            </div>
-            <div class="column-container main-content" id="mainContent">
-     
-                <div class="header" id="head">
-                    
-                <h1 class="title"><span id="h1Rock">Rock</span><br> <span id="h1Paper">Paper</span><br><span id="h1Scissors">Scissors</span></h1>
-                </div> 
-
-                <div id="nameBox" class="userInteraction"></div>
-                
-                <div id="rpsc" class="rock-paper-scissors-container hidden">
-                    <div class="card-container">
-                        <div class="card animate hoverOnIcon" id="buttonRock">
-                            <img class="weapons" id="rock" src="rockgrey.svg">  
-                        </div>
-                       
-                    </div>
-                    <div class="card-container">
-                        <div class="card animate hoverOnIcon" id="buttonPaper">
-                            <img class="weapons" id="paper" src="paper.svg">
-                        </div>
-                     
-                    </div>
-                    <div class="card-container">
-                        <div class="card animate hoverOnIcon" id="buttonScissors">
-                            <img class="weapons" id="scissors" src="scissors.svg">
-                        </div>
-                        
-                        
-                    </div>    
-                </div>
-               
-            </div>
-            <div class="column-container sidebar">
-         
-            </div>
-            
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="column-container sidebar"></div>
+      <div class="column-container main-content" id="mainContent">
+        <div class="header" id="head">
+          <h1 class="title">
+            <span id="h1Rock">Rock</span><br />
+            <span id="h1Paper">Paper</span><br /><span id="h1Scissors"
+              >Scissors</span
+            >
+          </h1>
         </div>
 
+        <div id="nameBox" class="userInteraction"></div>
 
-          
-           
-      
+        <div id="rpsc" class="rock-paper-scissors-container hidden">
+          <div class="card-container">
+            <div class="card animate hoverOnIcon" id="buttonRock">
+              <img class="weapons" id="rock" src="rockgrey.svg" />
+            </div>
+          </div>
+          <div class="card-container">
+            <div class="card animate hoverOnIcon" id="buttonPaper">
+              <img class="weapons" id="paper" src="paper.svg" />
+            </div>
+          </div>
+          <div class="card-container">
+            <div class="card animate hoverOnIcon" id="buttonScissors">
+              <img class="weapons" id="scissors" src="scissors.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column-container sidebar"></div>
+    </div>
 
-  
-
-
-
-
-
-
-
-
-      <footer>I'm a footer!</footer>
-     <script type="text/javascript" src="logic.js"></script>
-    </body>    
+    <footer>
+      <ul class="flex-footer-ul">
+        <li>
+          <a href="https://mixkit.co">Some audio sounds courtesy of: mixkit</a>
+        </li>
+        <li>
+          <a href="https://github.com/kennehcodes"
+            >Code, illustrations, other audio by Mackenzie Lee</a
+          >
+        </li>
+      </ul>
+    </footer>
+    <script type="text/javascript" src="logic.js"></script>
+  </body>
 </html>

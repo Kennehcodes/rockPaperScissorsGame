@@ -184,7 +184,7 @@ function createScoreAndPlayerBox() {
 function createUIStatusBar() {
   UI.sbDiv = document.createElement("div");
   UI.sb1P = document.createElement("p");
-  UI.sb1P.textContent = "Pick rock, paper or scissors to start!";
+  UI.sb1P.textContent = "To start select a move!";
   UI.sbDiv.classList.add("notifications");
   UI.sbDiv.appendChild(UI.sb1P);
   UI.mainContent = document.querySelector("#mainContent");

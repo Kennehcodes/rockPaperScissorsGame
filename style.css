@@ -183,6 +183,10 @@ body {
     border-color: greenyellow;
 }
 
+.pAgainButton {
+  margin: 0.25rem;
+}
+
 .pAgainButton:hover , .nameInputButton:hover{
     background-color: #e8ffbe;
     color: black;

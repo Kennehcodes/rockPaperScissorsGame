@@ -259,7 +259,6 @@ function hideRockPaperScissorsIcons() {
 function showingMoveForPlayer(move, playerClass) {
   if (move === "rock") {
     addColorClass(rock, playerClass);
-    sounds[move].load();
     sounds[move].play();
   } else if (move === "paper") {
     addColorClass(paper, playerClass);

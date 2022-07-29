@@ -363,6 +363,8 @@ function initiateEnding() {
   UI.gdr1h1.textContent = "Stats";
   UI.gdr1h2.textContent = playerOne.username;
   UI.gdr1h3.textContent = playerTwo.username;
+  UI.gdr1h3.classList.add("unSpace");
+  UI.gdr1h2.classList.add("unSpace");
 
   UI.gdr2d1.textContent = "Number of times 'rock' was chosen";
   UI.gd1p1.textContent = gameStats.nTimesP1ThrewRock;

@@ -68,7 +68,9 @@ footer {
 
 }
 
-
+.page-container {
+  margin-bottom: 0.5rem;
+}
 .username, .playerOne, .p1 {
     color: #28c2ff;
 }
@@ -174,6 +176,9 @@ body {
     flex-basis: 15%;
     width: 15%;
       
+}
+.unSpace {
+  margin: 0.2rem;
 }
 .pAgainButton, .nameInputButton {
     color: #7880b5;

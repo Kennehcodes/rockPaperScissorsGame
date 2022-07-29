@@ -12,6 +12,8 @@ gameWin: new Audio("/sounds/gamewin.wav"), gameLose: new Audio("/sounds/gamelose
 //sounds for rock, paper and scissors are by myself Mackenzie Lee
 //other sounds are from mixkit.co/free-sound-effect
 
+const gameStats = {nTimesP1ThrewRock: 0, nTimesP2ThrewRock: 0, nTimesP1ThrewPaper: 0,
+     nTimesP2ThrewPaper: 0, nTimesP1ThrewScissors: 0, nTimesP2ThrewScissors: 0, nTimesTie: 0}
 const rock = {};
 const paper = {};
 const scissors = {};
@@ -28,6 +30,7 @@ const playsLower = PLAYS.map((e) => {
 
 
 //-----------(query selectors)
+UI.body = document.querySelector("body");
 UI.uiDiv = document.querySelector("#nameBox");
 UI.rPSC = document.querySelector("#rpsc");
 rock.h1 = document.querySelector("#h1Rock");
@@ -225,7 +228,7 @@ UI.sb1P.textContent = "Pick rock, paper or scissors to start!";
 UI.sbDiv.classList.add("notifications");
 UI.sbDiv.appendChild(UI.sb1P);
 UI.mainContent = document.querySelector("#mainContent");
-UI.mainContent.insertBefore(UI.sbDiv, UI.rPSC);
+UI.mainContent.insertBefore(UI.sbDiv, UI.uiDiv);
 
 }
 
@@ -278,7 +281,28 @@ function getComputerChoice() { //get's the computers move randomly
 
 
 
+function initiateEnding() {
+UI.body.textContent ="this is the end"
+console.log("Stats")
+console.log("Number of times rock was thrown: p1:" + gameStats.nTimesP1ThrewRock +  " p2: " + gameStats.nTimesP2ThrewRock);
+console.log("Number of times Paper was thrown: p1:" + gameStats.nTimesP1ThrewPaper +  " p2: " + gameStats.nTimesP2ThrewPaper);
+console.log("Number of times Scissors was thrown: p1:" + gameStats.nTimesP1ThrewScissors +  " p2: " + gameStats.nTimesP2ThrewScissors);
+console.log("number of ties: " + gameStats.nTimesTie);
 
+console.log("number of losses to the computer: " +  playerTwo.score);
+console.log("final score: " + "player one " +playerOne.score);
+console.log("final score: " + "player two " +playerTwo.score);
+
+
+//reset stats
+gameStats.nTimesP1ThrewRock = 0;
+gameStats.nTimesP2ThrewRock = 0;
+gameStats.nTimesP1ThrewPaper = 0;
+gameStats.nTimesP2ThrewPaper = 0;
+gameStats.nTimesP1ThrewScissors = 0;
+gameStats.nTimesP2ThrewScissor = 0;
+gameStats.nTimesTie = 0;
+}
 
 //game evaluation logic: 
 
@@ -340,15 +364,17 @@ function gamePlay(event) {
     //updates plays on the play-by-play box on the dom
     updateBox(`${playerOne.username} plays ${playerOne.currentMove}.`, 400)
     playerTwo.currentMove = getComputerChoice(); //gets pc move
-    updateBox(`${playerTwo.username} plays ${playerTwo.currentMove}.`, 2200) //shows pc move
+//    
+    updateBox("...", 900) //shows pc move
+    updateBox(`${playerTwo.username} plays ${playerTwo.currentMove}.`, 1600) //shows pc move
     
     gameElmnts.isTie = isTie(playerOne.currentMove, playerTwo.currentMove); //checks for a tie  
     if(gameElmnts.isTie === true) {
         showMovesForTie(playerTwo.currentMove) //shows p2 move
-        console.log("tie")
+
     } else {
         showingMoveForPlayer(playerTwo.currentMove, "p2");
-        console.log("not a tie")    } 
+    } 
     if (gameElmnts.isTie === false) {
         playerOne.isRoundWinner = isWinner( //checks for p1 win returns true or false
         playerOne.currentMove,
@@ -359,14 +385,15 @@ function gamePlay(event) {
 
         if (playerOne.isRoundWinner === true) { //if p1 is round winner the score for p1 is updated
             //updates player score on dom
+            
 
             playerOne.score++;
             UI.p1DivForScore.innerText = playerOne.score;  
          
             setTimeout(() => { sounds.win.play();
-            }, 4000)
-            
-            updateBox(`${playerOne.username} played ${playerOne.currentMove} and ${playerTwo.username} played ${playerTwo.currentMove}. \n You win!!`, 4000)
+            }, 3400)
+            //`${playerOne.username} played ${playerOne.currentMove} and ${playerTwo.username} played ${playerTwo.currentMove}. \n You win!!`
+            updateBox("YOU WON!", 3400)
             
             
         } else if (playerTwo.isRoundWinner === true) { //if p2 is round winner the score for p2 is updated
@@ -376,20 +403,36 @@ function gamePlay(event) {
             UI.p2DivForScore.innerText = playerTwo.score;
             
             setTimeout(() => { sounds.lose.play();
-            }, 4000)
-            
-            updateBox(`${playerTwo.username} played ${playerTwo.currentMove} and ${playerOne.username} played ${playerOne.currentMove}. \n You lost.`, 4000)
+            }, 3400)
+            //`${playerTwo.username} played ${playerTwo.currentMove} and ${playerOne.username} played ${playerOne.currentMove}. \n You lost.`
+            updateBox("YOU LOST", 3400)
                     } 
 
     } else {
     
     console.log("tie space only") 
-
+    gameStats.nTimesTie++;
+    //counts ties in game play
     setTimeout(() => { sounds.tie.play();
-    }, 4000)
-
-    updateBox(`${playerOne.username} and ${playerTwo.username} played ${playerOne.currentMove}. \n It's a tie!`, 4000)
+    }, 3400)
+//`${playerOne.username} and ${playerTwo.username} played ${playerOne.currentMove}. \n It's a tie!`,
+    updateBox("TIE!", 3400)
     
+    }
+
+    if (playerOne.currentMove === "paper") {
+        gameStats.nTimesP1ThrewPaper++;
+    } else if (playerOne.currentMove === "scissors") {
+        gameStats.nTimesP1ThrewScissors++;
+    } else {
+        gameStats.nTimesP1ThrewRock++;
+    }
+    if (playerTwo.currentMove === "paper") {
+        gameStats.nTimesP2ThrewPaper++;
+    } else if (playerTwo.currentMove === "scissors") {
+        gameStats.nTimesP2ThrewScissors++;
+    } else {
+        gameStats.nTimesP2ThrewRock++;
     }
 
     setTimeout( ()=> {
@@ -415,6 +458,11 @@ function gamePlay(event) {
         //deletes event handler if max score has been reached before the event is clicked again.
         disableMouseOverOnButtons();
         UI.rPSC.removeEventListener('click', checkForValidGame);
+        setTimeout( ()=> {
+            initiateEnding(); 
+            
+        }, 6000
+        )
         
       
     }
@@ -567,23 +615,6 @@ function clearGame(){
     setTimeout(endGameSummary, 2000);
     createPlayAgainButton();
 }
-///to creates--
-//flash the result? maybe?
-//sound?
-    //what I want to happen is a overview flash of the winner and round info;
-    //maybe keep a log of how many times the computer threw rock vs you?
-    //keep a log of how many times the player one threw rock
-    //after overview I want to create a reset button to have two options.
-    //option one: change username and restart
-    //option two: keep playing
-    //additional options change game round play until functions
-    //in order to accomplish this Ill need to make my code modula
-    //-------(for gameplay)
-
-
-
-
-
 
 
 

@@ -255,9 +255,8 @@ body {
 }
 .form {
     display: flex;
-
     gap: 0.4rem;
-    justify-content: baseline;
+    justify-content: center;
     align-items: flex-end ;
 }
     

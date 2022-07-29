@@ -8,14 +8,14 @@
 const gameElmnts = { round: 0, winningScore: 5 };
 
 const sounds = {
-  rock: new Audio("/sounds/rock.wav"),
-  paper: new Audio("/sounds/paper.wav"),
-  scissors: new Audio("/sounds/scissors.wav"),
-  win: new Audio("/sounds/win.wav"),
-  lose: new Audio("/sounds/lose.wav"),
-  tie: new Audio("/sounds/tie.wav"),
-  gameWin: new Audio("/sounds/gamewin.wav"),
-  gameLose: new Audio("/sounds/gamelose.wav"),
+  rock: new Audio("rock.wav"),
+  paper: new Audio("paper.wav"),
+  scissors: new Audio("scissors.wav"),
+  win: new Audio("win.wav"),
+  lose: new Audio("lose.wav"),
+  tie: new Audio("tie.wav"),
+  gameWin: new Audio("gamewin.wav"),
+  gameLose: new Audio("gamelose.wav"),
 };
 
 const gameStats = {
@@ -259,6 +259,7 @@ function hideRockPaperScissorsIcons() {
 function showingMoveForPlayer(move, playerClass) {
   if (move === "rock") {
     addColorClass(rock, playerClass);
+    sounds[move].load();
     sounds[move].play();
   } else if (move === "paper") {
     addColorClass(paper, playerClass);

@@ -9,7 +9,7 @@ A bright and colorful game of Rock Paper Scissors against the computer. Play rou
 
 **Tech used:** HTML, CSS, JavaScript, with some audio credits to mixkit, other audio and illustrations by myself.
 
-Created using extensive Javascript DOM manipulation techniques and event listeners. The game progresses from stage to stage depending on events in the game.  
+Created using extensive Javascript DOM manipulation techniques and event listeners. The game progresses from stage to stage depending on events in the game. Also uses CSS animation techniques.
 
 ## Future Improvements
 

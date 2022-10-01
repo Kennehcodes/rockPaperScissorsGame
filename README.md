@@ -1,9 +1,22 @@
-# rockPaperScissorsGame
-The game code implementation consists of three main files, and then image and sound elements.
-The first is the logic.js file which has the js scripts that maintain the script.
+# Rock Paper Scissors Game
+A bright and colorful game of Rock Paper Scissors against the computer. Play round after round and see your stats. Fun, enjoyable and simple all in one page!
 
-The second is the rockPaperindex.html file which has the html for the page.
+**Link to project:** https://rockps.mackenziedev.com/
 
-The third is the style.css file which holds the styling, classes and ids that are modified for the look and feel of the gamet.
-[../rockPaperIndex.html]
-https://rockps.mackenziedev.com/
+
+
+## How It's Made:
+
+**Tech used:** HTML, CSS, JavaScript, with some audio credits to mixkit, other audio and illustrations by myself.
+
+Created using extensive Javascript DOM manipulation techniques and event listeners. The game progresses from stage to stage depending on events in the game.  
+
+## Future Improvements
+
+Some implements I would like to add to this game would be improved design to the overall look, and changes to the end stat screen, perhaps allowing for persistant data using some storage techniques. 
+
+## Lessons Learned:
+
+I worked through a lot of issues with DOM manipulation techniques and did extensive research on the subject as well as worked with promises.
+
+

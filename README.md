@@ -6,4 +6,4 @@ The second is the rockPaperindex.html file which has the html for the page.
 
 The third is the style.css file which holds the styling, classes and ids that are modified for the look and feel of the gamet.
 [../rockPaperIndex.html]
-https://mackenziedev.com/projects/rock-paper-scissors/
+https://rockps.mackenziedev.com/

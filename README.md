@@ -22,3 +22,14 @@ Some implements I would like to add to this game would be improved design to the
 I worked through a lot of issues with DOM manipulation techniques and did extensive research on the subject as well as worked with promises.
 
 
+
+
+## My Other Projects
+<br>
+
+| <img src="https://github.com/mac-kenzie-lee/drinkLib/blob/master/large-small-dlib.gif?raw=true" alt="small mobile gif of drink lib">  | <img src="https://github.com/mac-kenzie-lee/storyCrafter/blob/main/storyCrafterGif2.gif?raw=true" alt="Screenshot gif for story crafter"> | <img src="https://github.com/mac-kenzie-lee/rockPaperScissorsGame/blob/main/rps.gif?raw=true" alt="rock paper scissors website demo"> | <img src="https://github.com/mac-kenzie-lee/not-too-boring/blob/main/nottooboring.gif?raw=true" alt="Not Too Boring website demonstration"> | <img src="https://github.com/mac-kenzie-lee/etch-a-sketch-project/blob/main/etchasketch.gif?raw=true" alt="Etch a sketch demo"> |
+| :---:   | :---:   | :---: | :---: | :---: |
+| **[DrinkLib](https://github.com/mac-kenzie-lee/drinkLib)**  | **[Story Crafter](https://github.com/mac-kenzie-lee/storyCrafter)**  | **[Rock Paper Scissors](https://github.com/mac-kenzie-lee/rockPaperScissorsGame)** | **[Not Too Boring](https://github.com/mac-kenzie-lee/not-too-boring/)**  | **[Etch A Sketch Project](https://github.com/mac-kenzie-lee/etch-a-sketch-project)** |
+|  Find your next cocktail | Remember your wins & grow your career | Bright, simple challenge VS the computer. | Rainy, hot, cold days won't stop you from having a good time in these cities... | A retro throwback drawing application allows for pixelated sketching |
+<br>
+<hr>

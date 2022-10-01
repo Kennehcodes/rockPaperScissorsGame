@@ -3,7 +3,9 @@ A bright and colorful game of Rock Paper Scissors against the computer. Play rou
 
 **Link to project:** https://rockps.mackenziedev.com/
 
-
+<p align="center">
+<img src="https://github.com/mac-kenzie-lee/rockPaperScissorsGame/blob/main/rps.gif?raw=true" alt="rock paper scissors website demo">
+</p>
 
 ## How It's Made:
 
